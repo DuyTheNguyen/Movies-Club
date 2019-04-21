@@ -108,7 +108,7 @@ public class UserManagedBean {
         }
         */
 
-        UserDTO u = userManagement.getUserDetails("00002");
+        UserDTO u = userManagement.getUserDetails("00003");
 
         if (u == null) {
             // no such employee
