@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Display an Employee's Details</title>
+    </h:head>
+    <h:body>
+
+        <h2>
+            Details of <h:outputText value="#{userManagedBean.userid}"/>
+        </h2>
+
+        <h:form>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                            <h:outputLabel value="User ID:"/>
+                        </td>
+                        <td>
+                            <h:outputText value="#{userManagedBean.userid}"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h:outputLabel value="Name:"/>
+                        </td>
+                        <td>
+                            <h:outputText value="#{userManagedBean.name}"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h:outputLabel value="Phone:"/>
+                        </td>
+                        <td>
+                            <h:outputText value="#{userManagedBean.phone}"/>     
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h:outputLabel value="Email:"/>
+                        </td>
+                        <td>
+                            <h:outputText value="#{userManagedBean.email}"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h:outputLabel value="User Group:"/>
+                        </td>
+                        <td>
+                            <h:outputText value="#{userManagedBean.appGroup}"/>
+                        </td>
+                    </tr>    
+                </tbody>
+            </table>
+
+            <p></p>
+            <p>
+                Click <h:outputLink value="yourAccount.xhtml">here</h:outputLink>
+                to return to the Your Account
+
+            </p>
+            <p>
+                Click <h:outputLink value="../index.xhtml">here</h:outputLink>
+                to return to the Main Menu
+
+            </p>
+
+        </h:form>
+    </h:body>
+</html>
+
+
+
