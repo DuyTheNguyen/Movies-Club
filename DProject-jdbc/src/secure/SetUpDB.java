@@ -13,12 +13,15 @@ import java.util.ArrayList;
  */
 public class SetUpDB {
       public static void main(String[] args) {
+          /*
         UserDB userDB = new UserDB("UserTable");
-          
+        
+       
             // make sure no name conflicts
         try {
             userDB.destroyDBTable();
         } catch (Exception ex) {
+            System.out.println(ex);
         }
 
         // create the database table
@@ -43,20 +46,16 @@ public class SetUpDB {
         // add data to db
         userDB.addRecords(empList);
         
-        
-        
-        
-        
         ShowtimeDB showtimeDB = new ShowtimeDB("ShowtimeTable");
-          
-            // make sure no name conflicts
         try {
             showtimeDB.destroyDBTable();
         } catch (Exception ex) {
+            System.out.println(ex);
         }
+      
 
         // create the database table
-        System.out.println("Create an empty database table Showitme");
+        System.out.println("\n\nCreate an empty database table Showitme");
         showtimeDB.createDBTable();
         
         System.out.println("Add several static records in the database table");
@@ -76,5 +75,34 @@ public class SetUpDB {
         
         // add data to db
         showtimeDB.addRecords(shList);
+        */
+        
+        
+        TicketDB ticketDB = new TicketDB("TicketTable");
+        try {
+            ticketDB.destroyDBTable();
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+     
+        // create the database table
+        System.out.println("\n\nCreate an empty database table Ticket");
+        ticketDB.createDBTable();
+        
+        System.out.println("Add several static records in the database table");
+        
+        // prepare data
+        Ticket t001 = new Ticket("00001", "00002", "00003", "2");
+        Ticket t002 = new Ticket("00002", "00003", "00004", "3");
+       
+        // prepare list
+        ArrayList<Ticket> tList = new ArrayList<>();
+        tList.add(t001);
+        tList.add(t002);
+        
+        
+        // add data to db
+        ticketDB.addRecords(tList);
+        
       }
 }
