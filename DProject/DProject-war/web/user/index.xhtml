@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Movie Club - User Main Menu</title>
+    </h:head>
+    <!--
+    <f:metadata>
+        <f:viewAction action="myEmpManagedBean.setDefaultUserID()" />
+    </f:metadata>
+    -->
+    <h:body>
+        <h1>
+            <h:outputText value="Movie Club"/>
+        </h1>
+        
+        <h2>
+            <h:outputText value="Main Menu"/>
+        </h2>
+        <!--
+        <h3>
+            <h:outputText value="Welcome back, myEmpManagedBean.empId !"/>
+        </h3>
+        -->
+        <ol>
+            <li>
+                <h:outputLink value="account/yourAccount.xhtml">
+                    Your Account
+                </h:outputLink>
+            </li>
+            <li>
+                <h:form>
+                    <h:commandLink value="Your Ticket" action="#{myEmpManagedBean.setUserDetailsForChange()}">
+                        <f:param  name="passedID" value="#{myEmpManagedBean.empId}"/>
+                    </h:commandLink>
+                </h:form>
+            </li>
+            <li>
+                <h:form>
+                    <h:commandLink value="List of Showtimes" action="#{myEmpManagedBean.changeUserPassword()}">
+                        <f:param  name="passedID" value="#{myEmpManagedBean.empId}"/>
+                    </h:commandLink>
+                </h:form>
+            </li>
+        </ol>
+        <h:form>
+            Click <h:commandButton value="Logout" action="#{myLoginManagedBean.logoutResult()}"/>           
+        </h:form>
+    </h:body>
+</html>
+
