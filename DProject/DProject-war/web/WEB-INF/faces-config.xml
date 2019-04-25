@@ -19,16 +19,40 @@
         </navigation-case>
     </navigation-rule>
     
-     <navigation-rule>
+    
+    <!-- ***************** Begin: ACCOUNT SECTION ************************* -->
+    <!-- Menu Page -->
+    <navigation-rule>
         <description>Display User Details</description>
         <from-view-id>/user/account/yourAccount.xhtml</from-view-id>
+        
+        <!-- To display page -->
         <navigation-case>
-            <from-outcome>success</from-outcome>
+            <from-outcome>success_display</from-outcome>
             <to-view-id>/user/account/displayUser.xhtml</to-view-id>
         </navigation-case>
+        
+        <!-- To change details page -->
+        <navigation-case>
+            <from-outcome>success_details</from-outcome>
+            <to-view-id>/user/account/changeUserDetails.xhtml</to-view-id>
+        </navigation-case>
+        
+        <!-- To change password page -->
+        <navigation-case>
+            <from-outcome>success_password</from-outcome>
+            <to-view-id>/user/account/changePassword.xhtml</to-view-id>
+        </navigation-case>
+        
         <navigation-case>
             <from-outcome>failure</from-outcome>
             <to-view-id>/authFailure.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
+    
+    <!-- Change information details -->
+    
+    
+    <!-- Change password -->
+    <!-- ***************** End: ACCOUNT SECTION ************************* -->
 </faces-config>
