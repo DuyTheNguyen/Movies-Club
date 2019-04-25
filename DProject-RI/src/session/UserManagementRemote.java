@@ -20,7 +20,7 @@ public interface UserManagementRemote {
 
     boolean updateUserDetails(UserDTO userDTO);
 
-    boolean updateEmployeePassword(String userid, String newPassword);
+    boolean updateUserPassword(String userid, String newPassword);
 
     UserDTO getUserDetails(String userid);
 

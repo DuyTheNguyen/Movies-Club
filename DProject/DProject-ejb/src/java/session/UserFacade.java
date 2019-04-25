@@ -99,8 +99,8 @@ public class UserFacade implements UserFacadeLocal {
         if (u == null) {
             return false;
         }
-
-        // no need to update the primary key - empId
+        
+        // no need to update the primary key - userid
         edit(user);
         return true;
     }
