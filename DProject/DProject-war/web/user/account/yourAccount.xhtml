@@ -27,15 +27,15 @@
         <ol>
             <li>
                 <h:form>
-                    <h:commandLink value="Display your details" action="#{userManagedBean.displayUser()}">
+                    <h:commandLink value="Display your details" action="#{userManagedBean.displayUserFor('display')}">
                         <f:param  name="passedID" value="00001"/>
                     </h:commandLink>
                </h:form>
            </li>
             <li>
                 <h:form>
-                    <h:commandLink value="Change your details" action="#{myEmpManagedBean.setUserDetailsForChange()}">
-                        <f:param  name="passedID" value="#{myEmpManagedBean.empId}"/>
+                    <h:commandLink value="Change your details" action="#{userManagedBean.displayUserFor('details')}">
+                        <f:param  name="passedID" value="00001"/>
                     </h:commandLink>
                 </h:form>
             </li>

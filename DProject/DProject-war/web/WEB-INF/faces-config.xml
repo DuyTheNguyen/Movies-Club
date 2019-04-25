@@ -50,8 +50,23 @@
         </navigation-case>
     </navigation-rule>
     
-    <!-- Change information details -->
-    
+    <!-- Change details -->
+    <navigation-rule>
+        <description>Change User Details</description>
+        <from-view-id>/user/account/changeUserDetails.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/user/account/changeUserSuccessful.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>failure</from-outcome>
+            <to-view-id>/user/account/changeUserFailure.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>debug</from-outcome>
+            <to-view-id>/user/debugEmpId.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
     
     <!-- Change password -->
     <!-- ***************** End: ACCOUNT SECTION ************************* -->
