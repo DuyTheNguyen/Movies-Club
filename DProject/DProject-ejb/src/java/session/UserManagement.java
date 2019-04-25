@@ -97,7 +97,7 @@ public class UserManagement implements UserManagementRemote {
     }
 
     @Override
-    public boolean updateEmployeePassword(String userid, String newPassword) {
+    public boolean updateUserPassword(String userid, String newPassword) {
         return userFacade.updatePassword(userid, newPassword);    
     }
 
