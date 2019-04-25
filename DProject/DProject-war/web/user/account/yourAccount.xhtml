@@ -41,8 +41,8 @@
             </li>
             <li>
                 <h:form>
-                    <h:commandLink value="Change your password" action="#{myEmpManagedBean.changeUserPassword()}">
-                        <f:param  name="passedID" value="#{myEmpManagedBean.empId}"/>
+                    <h:commandLink value="Change your password" action="#{userManagedBean.displayUserFor('password')}">
+                         <f:param  name="passedID" value="00001"/>
                     </h:commandLink>
                 </h:form>
             </li>

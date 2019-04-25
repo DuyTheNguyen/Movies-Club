@@ -41,7 +41,7 @@
         <!-- To change password page -->
         <navigation-case>
             <from-outcome>success_password</from-outcome>
-            <to-view-id>/user/account/changePassword.xhtml</to-view-id>
+            <to-view-id>/user/account/changeUserPassword.xhtml</to-view-id>
         </navigation-case>
         
         <navigation-case>
@@ -61,6 +61,24 @@
         <navigation-case>
             <from-outcome>failure</from-outcome>
             <to-view-id>/user/account/changeUserFailure.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>debug</from-outcome>
+            <to-view-id>/user/debugEmpId.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+     <!-- Change password -->
+    <navigation-rule>
+        <description>Change User Password</description>
+        <from-view-id>/user/account/changeUserPassword.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/user/account/changePasswordSuccessful.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>failure</from-outcome>
+            <to-view-id>/user/account/changePasswordFailure.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>
             <from-outcome>debug</from-outcome>

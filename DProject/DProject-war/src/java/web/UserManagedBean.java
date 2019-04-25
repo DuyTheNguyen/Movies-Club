@@ -12,6 +12,11 @@ import javax.enterprise.context.Conversation;
 import javax.enterprise.context.ConversationScoped;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.component.UIComponent;
+import javax.faces.component.UIInput;
+import javax.faces.context.FacesContext;
+import javax.faces.validator.ValidatorException;
 import javax.inject.Inject;
 import session.UserManagementRemote;
 
@@ -27,6 +32,7 @@ public class UserManagedBean implements Serializable {
     private String name;
     private String email;
     private String password;
+    private String newPassword;
     private String confirmPassword;
     private String appGroup;
     private String phone;
@@ -91,6 +97,13 @@ public class UserManagedBean implements Serializable {
         return (s == null);
     }
 
+    public String getNewPassword() {
+        return newPassword;
+    }
+
+    public void setNewPassword(String newPassword) {
+        this.newPassword = newPassword;
+    }
     //Conversation
     @Inject
     private Conversation conversation;
@@ -116,6 +129,7 @@ public class UserManagedBean implements Serializable {
         phone = null;
         email = null;
         password = null;
+        newPassword = null;
         confirmPassword = null;
         appGroup = null;
     }
@@ -145,6 +159,9 @@ public class UserManagedBean implements Serializable {
         }
     }
 
+    /**
+     * ************************ Display user ************************
+     */
     public String displayUserFor(String purpose) {
 
         // check empId is null
@@ -153,7 +170,7 @@ public class UserManagedBean implements Serializable {
             return "debug";
         }*/
         String result = "failure";
-        if (purpose.equals("details")) {
+        if (purpose.equals("details") || purpose.equals("password")) {
             // note the startConversation of the conversation
             startConversation();
         }
@@ -163,6 +180,9 @@ public class UserManagedBean implements Serializable {
         return result;
     }
 
+    /**
+     * ************************ Change details ************************
+     */
     public String updateUser() {
         // check userid is null
 
@@ -182,4 +202,46 @@ public class UserManagedBean implements Serializable {
         }
     }
 
+    /**
+     * ************************ Change password ************************
+     */
+    public void validateNewPasswordPair(FacesContext context,
+            UIComponent componentToValidate,
+            Object newValue) throws ValidatorException {
+
+        // get new password
+        String newPwd = (String) newValue;
+
+        // get confirm password
+        UIInput cnfPwdComponent = (UIInput) componentToValidate.getAttributes().get("cnfpwd");
+        String cnfPwd = (String) cnfPwdComponent.getSubmittedValue();
+
+        System.out.println("new password : " + newPwd);
+        System.out.println("confirm password : " + cnfPwd);
+
+        if (!newPwd.equals(cnfPwd)) {
+            FacesMessage message = new FacesMessage(
+                    "New Password and Confirm New Password are not the same! They must be the same.");
+            throw new ValidatorException(message);
+        }
+    }
+
+    public String changeUserPassword() {
+        // check empId is null
+        if (isNull(userid)) {
+            return "debug change password";
+        }
+
+        // newPassword and confirmPassword are the same - checked by the validator during input to JSF form
+        boolean result = userManagement.updateUserPassword(userid, newPassword);
+
+        System.out.println("result = " + result);
+        // note the endConversation of the conversation
+        endConversation();
+        if (result) {
+            return "success";
+        } else {
+            return "failure";
+        }
+    }
 }
