@@ -181,6 +181,24 @@ public class UserManagedBean implements Serializable {
     }
 
     /**
+     * ************************ Create user ************************
+     */
+    public String createUser(){
+        // check userid is null
+        
+        if (isNull(userid)) {
+            return "debug";
+        }
+        UserDTO userDTO = new UserDTO(userid, name, phone, email, password, "USER");
+        boolean result = userManagement.addUser(userDTO);
+        if (result) {
+            return "success";
+        } else {
+            return "failure";
+        }
+    }
+    
+    /**
      * ************************ Change details ************************
      */
     public String updateUser() {
