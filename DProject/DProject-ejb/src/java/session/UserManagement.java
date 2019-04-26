@@ -21,7 +21,7 @@ public class UserManagement implements UserManagementRemote {
     @EJB
     private UserFacadeLocal userFacade;
 
-    private Usertable employeeDTO2Entity(UserDTO userDTO) {
+    private Usertable userDTO2Entity(UserDTO userDTO) {
         if (userDTO == null) {
             // just in case
             return null;
@@ -39,7 +39,7 @@ public class UserManagement implements UserManagementRemote {
         return usertable;
     }
 
-    private UserDTO employeeEntity2DTO(Usertable user) {
+    private UserDTO userEntity2DTO(Usertable user) {
         if (user == null) {
             // just in case
             return null;
@@ -69,29 +69,29 @@ public class UserManagement implements UserManagementRemote {
             return false;
         }
 
-        // check employee exist?
+        // check user exist?
         if (hasUser(userDTO.getUserid())) {
-            // employee exists, cannot add one
+            // user exists, cannot add one
             return false;
         }
 
-        // employee not exist
+        // user not exist
         // convert to entity
-        Usertable user = this.employeeDTO2Entity(userDTO);
+        Usertable user = this.userDTO2Entity(userDTO);
         // add one
         return userFacade.addUser(user);
     }
 
     @Override
     public boolean updateUserDetails(UserDTO userDTO) {
-        // check employee exist?
+        // check user exist?
         if (!hasUser(userDTO.getUserid())) {
             return false;
         }
 
-        // employee exist, update details
+        // user exist, update details
         // convert to entity class
-        Usertable user = this.employeeDTO2Entity(userDTO);
+        Usertable user = this.userDTO2Entity(userDTO);
         // update details
         return userFacade.updatUserDetails(user);
     }
@@ -103,11 +103,11 @@ public class UserManagement implements UserManagementRemote {
 
     @Override
     public UserDTO getUserDetails(String userid) {
-         // get the employee
+         // get the user
         Usertable user = userFacade.find(userid);
 
         if (user == null) {
-            // not found - no such employee
+            // not found - no such user
             return null;
         } else {
             // found - prepare details
