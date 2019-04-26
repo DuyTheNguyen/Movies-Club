@@ -46,6 +46,12 @@
             <to-view-id>/user/account/changeUserPassword.xhtml</to-view-id>
         </navigation-case>
         
+        <!-- To delete account page -->
+        <navigation-case>
+            <from-outcome>success_delete</from-outcome>
+            <to-view-id>/user/account/deleteUser.xhtml</to-view-id>
+        </navigation-case>
+        
         <navigation-case>
             <from-outcome>failure</from-outcome>
             <to-view-id>/authFailure.xhtml</to-view-id>
@@ -66,7 +72,7 @@
         </navigation-case>
         <navigation-case>
             <from-outcome>debug</from-outcome>
-            <to-view-id>/user/debugEmpId.xhtml</to-view-id>
+            <to-view-id>/user/debugUserId.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
     
@@ -84,7 +90,25 @@
         </navigation-case>
         <navigation-case>
             <from-outcome>debug</from-outcome>
-            <to-view-id>/user/debugEmpId.xhtml</to-view-id>
+            <to-view-id>/user/debugUserId.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+     <!-- Delete User -->
+    <navigation-rule>
+        <description>Delete User</description>
+        <from-view-id>/user/account/deleteUser.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/user/account/deleteUserSuccessful.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>failure</from-outcome>
+            <to-view-id>/user/account/deleteUserFailure.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>debug</from-outcome>
+            <to-view-id>/user/debugUserId.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
     <!-- ***************** End: ACCOUNT SECTION ************************* -->

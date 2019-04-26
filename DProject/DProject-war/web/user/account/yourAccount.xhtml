@@ -46,6 +46,13 @@
                     </h:commandLink>
                 </h:form>
             </li>
+            <li>
+                <h:form>
+                    <h:commandLink value="Delete your account" action="#{userManagedBean.displayUserFor('delete')}">
+                         <f:param  name="passedID" value="00001"/>
+                    </h:commandLink>
+                </h:form>
+            </li>
         </ol>
          
          Click <h:outputLink value="../index.xhtml">here</h:outputLink>
