@@ -214,6 +214,7 @@ public class UserManagedBean implements Serializable {
         // note the endConversation of the conversation
         endConversation();
         if (result) {
+            EmailCenter.sendEmail(userDTO);
             return "success";
         } else {
             return "failure";
@@ -257,6 +258,7 @@ public class UserManagedBean implements Serializable {
         // note the endConversation of the conversation
         endConversation();
         if (result) {
+            EmailCenter.sendEmail(name);
             return "success";
         } else {
             return "failure";
