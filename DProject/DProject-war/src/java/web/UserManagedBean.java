@@ -170,7 +170,7 @@ public class UserManagedBean implements Serializable {
             return "debug";
         }*/
         String result = "failure";
-        if (purpose.equals("details") || purpose.equals("password")) {
+        if (!purpose.equals("display")) {
             // note the startConversation of the conversation
             startConversation();
         }
@@ -180,6 +180,44 @@ public class UserManagedBean implements Serializable {
         return result;
     }
 
+    /**
+     * ************************ Create user ************************
+     */
+    public String createUser(){
+        // check userid is null
+        
+        if (isNull(userid)) {
+            return "debug";
+        }
+        UserDTO userDTO = new UserDTO(userid, name, phone, email, password, "USER");
+        boolean result = userManagement.addUser(userDTO);
+        if (result) {
+            return "success";
+        } else {
+            return "failure";
+        }
+    }
+    /**
+     * ************************ Delete user ************************
+     */
+    public String deleteUser(){
+        // check empId is null
+        /*
+        if (isNull(userid)) {
+            return "debug";
+        }*/
+        //TODO: change later
+        boolean result = userManagement.removeUser("12345");
+        
+        // note the endConversation of the conversationz
+        endConversation();
+        if (result) {
+            return "success";
+        } else {
+            return "failure";
+        }
+    }
+    
     /**
      * ************************ Change details ************************
      */
@@ -196,6 +234,7 @@ public class UserManagedBean implements Serializable {
         // note the endConversation of the conversation
         endConversation();
         if (result) {
+            EmailCenter.sendEmail(userDTO);
             return "success";
         } else {
             return "failure";
@@ -239,6 +278,7 @@ public class UserManagedBean implements Serializable {
         // note the endConversation of the conversation
         endConversation();
         if (result) {
+            EmailCenter.sendEmail(name);
             return "success";
         } else {
             return "failure";

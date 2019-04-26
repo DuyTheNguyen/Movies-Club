@@ -1,0 +1,136 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Create An Account</title>
+    </h:head>
+
+    <h:body>
+
+        <h2>Create an account</h2>
+
+        <h3>Please provide your details 
+        </h3>
+
+        <p></p>
+
+        <h:form>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                            <h:outputLabel value="User Id:"/>
+                        </td>
+                        <td>
+                            <h:inputText 
+                                         title="User ID" id="userid"
+                                         value="#{userManagedBean.userid}"
+                                         size="6"
+                                         validatorMessage="The userid field must be exactly 5 characters long!"
+                                         >
+                                 <f:validateLength maximum="5" minimum="5"/>
+                            </h:inputText>
+                        </td>
+                        <td>
+                            <h:message for="userid" style="color:red"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h:outputLabel value="Name:"/>
+                        </td>
+                        <td>
+                            <h:inputText title="Name" id="name"
+                                         maxlength="25"
+                                         required="true" 
+                                         requiredMessage="Name must not be blank"
+                                         value="#{userManagedBean.name}"/>
+                        </td>
+                        <td>
+                            <h:message for="name" style="color:red"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h:outputLabel value="Phone:"/>
+                        </td>
+                        <td>
+                            <h:inputText title="Phone" maxlength="10"
+                                         required="false"
+                                         value="#{userManagedBean.phone}"/>     
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h:outputLabel value="Email:"/>
+                        </td>
+                        <td>
+                            <h:inputText title="Email" maxlength="30" 
+                                         required="false"
+                                         value="#{userManagedBean.email}"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h:outputLabel value="New Password:"/>
+                        </td>
+                        <td>
+                            <h:inputSecret id="newpwd" binding="#{newpwd}"
+                                           title="NewPassword" 
+                                           maxlength="8"
+                                           required="true"
+                                           requiredMessage="New Password must not be blank"
+                                           validator="#{userManagedBean.validateNewPasswordPair}"
+                                           value="#{userManagedBean.newPassword}">
+                                <f:validateLength minimum="8" maximum="8"/>
+                                <f:attribute name="cnfpwd" value="#{cnfpwd}"/>
+                            </h:inputSecret>
+                        </td>
+                        <td>
+                            <h:message for="newpwd" style="color:red"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h:outputLabel value="Confirm New Password:"/>
+                        </td>
+                        <td>
+                            <h:inputSecret id="cnfpwd" binding="#{cnfpwd}"
+                                           title="ConfirmPassword"
+                                           maxlength="8" 
+                                           required="true"
+                                           requiredMessage="Confirm New Password must not be blank"
+                                           value="#{userManagedBean.confirmPassword}">
+                                <f:validateLength minimum="8" maximum="8"/>
+                            </h:inputSecret>
+                        </td>
+                        <td>
+                            <h:message for="cnfpwd" style="color:red"/>
+                        </td>
+                    </tr>                    
+                    <tr>
+                        <td>
+                            <h:outputLabel value="User Group:"/>
+                        </td>
+                        <td>
+                            <h:outputLabel value="USER"/>
+                        </td>
+                    </tr>                       
+                </tbody>
+            </table>
+
+            <p></p>
+
+            <h:commandButton id="submit" value="Submit" 
+                             action="#{userManagedBean.createUser()}"/>
+
+        </h:form>
+    </h:body>
+</html>
+
+
+
+
+

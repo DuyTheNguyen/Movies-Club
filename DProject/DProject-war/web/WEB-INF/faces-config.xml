@@ -3,7 +3,7 @@
               xmlns="http://xmlns.jcp.org/xml/ns/javaee"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
-
+    <!-- ***************** Begin: LOGIN SECTION ************************* -->
     <navigation-rule>
         <description>Login</description>
         <from-view-id>/login.xhtml</from-view-id>
@@ -18,6 +18,8 @@
             <to-view-id>/authFailure.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
+    <!-- ***************** End: LOGIN SECTION ************************* -->
+    
     
     
     <!-- ***************** Begin: ACCOUNT SECTION ************************* -->
@@ -44,6 +46,12 @@
             <to-view-id>/user/account/changeUserPassword.xhtml</to-view-id>
         </navigation-case>
         
+        <!-- To delete account page -->
+        <navigation-case>
+            <from-outcome>success_delete</from-outcome>
+            <to-view-id>/user/account/deleteUser.xhtml</to-view-id>
+        </navigation-case>
+        
         <navigation-case>
             <from-outcome>failure</from-outcome>
             <to-view-id>/authFailure.xhtml</to-view-id>
@@ -64,7 +72,7 @@
         </navigation-case>
         <navigation-case>
             <from-outcome>debug</from-outcome>
-            <to-view-id>/user/debugEmpId.xhtml</to-view-id>
+            <to-view-id>/user/debugUserId.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
     
@@ -82,10 +90,43 @@
         </navigation-case>
         <navigation-case>
             <from-outcome>debug</from-outcome>
-            <to-view-id>/user/debugEmpId.xhtml</to-view-id>
+            <to-view-id>/user/debugUserId.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
     
-    <!-- Change password -->
+     <!-- Delete User -->
+    <navigation-rule>
+        <description>Delete User</description>
+        <from-view-id>/user/account/deleteUser.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/user/account/deleteUserSuccessful.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>failure</from-outcome>
+            <to-view-id>/user/account/deleteUserFailure.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>debug</from-outcome>
+            <to-view-id>/user/debugUserId.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
     <!-- ***************** End: ACCOUNT SECTION ************************* -->
+    
+    
+    
+    <!-- ***************** Begin: SIGN UP SECTION ************************* -->
+    <navigation-rule>
+        <description>Sign Up</description>
+        <from-view-id>/signup/signUp.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/signup/signUpSuccessful.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>failure</from-outcome>
+            <to-view-id>/signup/signUpFailure.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <!-- ***************** End: SIGN UP SECTION ************************* -->
 </faces-config>
