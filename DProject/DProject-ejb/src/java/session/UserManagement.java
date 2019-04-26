@@ -58,11 +58,13 @@ public class UserManagement implements UserManagementRemote {
     }
 
     @Override
+    @PermitAll
     public boolean hasUser(String userid) {
         return userFacade.hasUser(userid);
     }
 
     @Override
+    @PermitAll
     public boolean addUser(UserDTO userDTO) {
         if (userDTO == null) {
             // just in case
@@ -83,6 +85,7 @@ public class UserManagement implements UserManagementRemote {
     }
 
     @Override
+    @PermitAll
     public boolean updateUserDetails(UserDTO userDTO) {
         // check user exist?
         if (!hasUser(userDTO.getUserid())) {
@@ -97,11 +100,13 @@ public class UserManagement implements UserManagementRemote {
     }
 
     @Override
+    @PermitAll
     public boolean updateUserPassword(String userid, String newPassword) {
         return userFacade.updatePassword(userid, newPassword);    
     }
 
     @Override
+    @PermitAll
     public UserDTO getUserDetails(String userid) {
          // get the user
         Usertable user = userFacade.find(userid);
@@ -120,6 +125,7 @@ public class UserManagement implements UserManagementRemote {
     }
 
     @Override
+    @PermitAll
     public boolean removeUser(String userid) {
         return userFacade.removeUser(userid);
     }
