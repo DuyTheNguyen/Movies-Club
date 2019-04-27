@@ -19,14 +19,14 @@
         <h2>
             <h:outputText value="Main Menu"/>
         </h2>
-        <!--
+        
         <h3>
-            <h:outputText value="Welcome back, myEmpManagedBean.empId !"/>
+            <h:outputText value="Welcome back, #{userManagedBean.userid} !"/>
         </h3>
-        -->
+       
         <ol>
             <li>
-                <h:outputLink value="account/yourAccount.xhtml">
+                <h:outputLink value="user/account/yourAccount.xhtml">
                     Your Account
                 </h:outputLink>
             </li>
@@ -46,7 +46,7 @@
             </li>
         </ol>
         <h:form>
-            Click <h:commandButton value="Logout" action="#{myLoginManagedBean.logoutResult()}"/>           
+            Click <h:commandButton value="Logout" action="#{loginManagedBean.logout()}"/>           
         </h:form>
     </h:body>
 </html>

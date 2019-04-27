@@ -4,23 +4,42 @@
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
     <!-- ***************** Begin: LOGIN SECTION ************************* -->
+    <!-- Login Page -->
     <navigation-rule>
         <description>Login</description>
         <from-view-id>/login.xhtml</from-view-id>
         <navigation-case>
-            <from-action>#{loginManagedBean.checkUserID}</from-action>
+            <!-- <from-action>#{loginManagedBean.checkUserID}</from-action> -->
             <from-outcome>success</from-outcome>
-            <to-view-id>/index.xhtml</to-view-id>
+            <to-view-id>/user/index.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>
-            <from-action>#{loginManagedBean.checkUserID}</from-action>
+            <!-- <from-action>#{loginManagedBean.checkUserID}</from-action> -->
             <from-outcome>failure</from-outcome>
             <to-view-id>/authFailure.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
+    <!-- Login Failure Page -->
+    <navigation-rule>
+        <description>Login Failure</description>
+        <from-view-id>/authFailure.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>logout</from-outcome>
+            <to-view-id>/login.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
     <!-- ***************** End: LOGIN SECTION ************************* -->
     
-    
+    <!-- ***************** Begin: MAIN PAGE SECTION ************************* -->
+     <navigation-rule>
+        <description>Sign Out</description>
+        <from-view-id>/user/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>logout</from-outcome>
+            <to-view-id>/faces/index.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <!-- ***************** End: MAIN PAGE SECTION ************************* -->
     
     <!-- ***************** Begin: ACCOUNT SECTION ************************* -->
     <!-- Menu Page -->

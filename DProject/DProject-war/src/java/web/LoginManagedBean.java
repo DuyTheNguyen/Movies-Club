@@ -52,7 +52,8 @@ public class LoginManagedBean implements Serializable {
     public String logout() {
         HttpSession session = SessionUtils.getSession();
         session.invalidate();
-        return "logout";
+        return "/login.xhtml?faces-redirect=true";
+        //return "logout";
     }
 
 }
