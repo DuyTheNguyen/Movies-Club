@@ -124,7 +124,7 @@ public class UserManagedBean implements Serializable {
      * Creates a new instance of UserManagedBean
      */
     public UserManagedBean() {
-        userid = null;
+        userid = SessionUtils.getUserId();
         name = null;
         phone = null;
         email = null;
@@ -135,14 +135,11 @@ public class UserManagedBean implements Serializable {
     }
 
     private boolean setUserDetails() {
-        /*
         if (isNull(userid)) {
-            return "debug";
+            return false;
         }
-         */
 
-        //TODO: Change the hardcode ID
-        UserDTO u = userManagement.getUserDetails("00003");
+        UserDTO u = userManagement.getUserDetails(userid);
 
         if (u == null) {
             // no such employee
@@ -164,11 +161,10 @@ public class UserManagedBean implements Serializable {
      */
     public String displayUserFor(String purpose) {
 
-        // check empId is null
-        /*
+        // check userid is null
         if (isNull(userid)) {
             return "debug";
-        }*/
+        }
         String result = "failure";
         if (!purpose.equals("display")) {
             // note the startConversation of the conversation
@@ -185,7 +181,6 @@ public class UserManagedBean implements Serializable {
      */
     public String createUser(){
         // check userid is null
-        
         if (isNull(userid)) {
             return "debug";
         }
@@ -201,13 +196,11 @@ public class UserManagedBean implements Serializable {
      * ************************ Delete user ************************
      */
     public String deleteUser(){
-        // check empId is null
-        /*
+        // check userid is null
         if (isNull(userid)) {
             return "debug";
-        }*/
-        //TODO: change later
-        boolean result = userManagement.removeUser("12345");
+        }
+        boolean result = userManagement.removeUser(userid);
         
         // note the endConversation of the conversationz
         endConversation();
@@ -223,7 +216,6 @@ public class UserManagedBean implements Serializable {
      */
     public String updateUser() {
         // check userid is null
-
         if (isNull(userid)) {
             return "debug";
         }
@@ -266,7 +258,7 @@ public class UserManagedBean implements Serializable {
     }
 
     public String changeUserPassword() {
-        // check empId is null
+        // check userid is null
         if (isNull(userid)) {
             return "debug change password";
         }
