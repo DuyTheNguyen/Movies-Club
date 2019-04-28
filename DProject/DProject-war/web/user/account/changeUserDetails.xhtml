@@ -7,8 +7,8 @@
         <title>Change User's Details</title>
     </h:head>
     
-    <h:body>
-        
+    <h:body class="w3-container">
+        <h:outputStylesheet library="css" name="style.css"  />
         <h2>Change Your Details Page</h2>
             
         <h3>Please update the your details 
@@ -77,6 +77,7 @@
             <p></p>
 
             <h:commandButton id="submit" value="Submit" 
+                             class="w3-btn w3-indigo w3-round-large"
                              action="#{userManagedBean.updateUser()}"/>
 
         </h:form>

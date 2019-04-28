@@ -6,8 +6,8 @@
     <h:head>
         <title>Display an Employee's Details</title>
     </h:head>
-    <h:body>
-
+    <h:body class="w3-container">
+        <h:outputStylesheet library="css" name="style.css"  />
         <h2>
             Details of <h:outputText value="#{userManagedBean.userid}"/>
         </h2>
@@ -59,11 +59,7 @@
             </table>
 
             <p></p>
-            <p>
-                Click <h:outputLink value="yourAccount.xhtml">here</h:outputLink>
-                to return to the Your Account
-
-            </p>
+          
             <p>
                 Click <h:outputLink value="../index.xhtml">here</h:outputLink>
                 to return to the Main Menu

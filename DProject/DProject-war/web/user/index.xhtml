@@ -11,7 +11,8 @@
         <f:viewAction action="myEmpManagedBean.setDefaultUserID()" />
     </f:metadata>
     -->
-    <h:body>
+    <h:body class="w3-container">
+        <h:outputStylesheet library="css" name="style.css"  />
         <h1>
             <h:outputText value="Movie Club"/>
         </h1>
@@ -26,33 +27,28 @@
 
         <ol>
             <li>
-                <h:outputLink value="user/account/yourAccount.xhtml">
-                    Your Account
-                </h:outputLink>
-            </li>
-
-            <li>
                 <h:form>
-                    <h:commandLink value="Your Ticket" action="#{myEmpManagedBean.setUserDetailsForChange()}">
+                    <h:commandLink value="Your Account" action="#{navigationManagedBean.MainMenuNavigation('your_account')}">
                         <f:param  name="passedID" value="#{myEmpManagedBean.empId}"/>
                     </h:commandLink>
                 </h:form>
             </li>
+
             <li>
-                <h:outputLink value="user/showtime/index.xhtml">
-                    List of Showtimes
+                <h:outputLink value="showtime/index.xhtml">
+                    List of Showtime
                 </h:outputLink>
             </li>
             <li>
                 <h:form>
-                    <h:commandLink value="List of Showtimes" action="#{myEmpManagedBean.changeUserPassword()}">
+                    <h:commandLink value="List of Showtimes" action="#{navigationManagedBean.MainMenuNavigation('list_of_showtime')}">
                         <f:param  name="passedID" value="#{myEmpManagedBean.empId}"/>
                     </h:commandLink>
                 </h:form>
             </li>
         </ol>
         <h:form>
-            Click <h:commandButton value="Logout" action="#{loginManagedBean.logout()}"/>           
+            <h:commandButton class="w3-button w3-white w3-border w3-border-indigo w3-round-large" value="Logout" action="#{loginManagedBean.logout()}"/>           
         </h:form>
     </h:body>
 </html>

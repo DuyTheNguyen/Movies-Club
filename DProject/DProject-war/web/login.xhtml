@@ -5,52 +5,59 @@
     <h:head>
         <title>Movie Club - Login Page</title>
     </h:head>
+    <h:body class="w3-container">
+        <h:outputStylesheet library="css" name="style.css"  />
+        <h1>
+            Movie Club Company Ltd
+        </h1>
 
-    <h1>
-        Movie Club Company Ltd
-    </h1>
+        <h2>
+            Movie Management System
+        </h2>
 
-    <h2>
-        Movie Management System
-    </h2>
+        <h2>
+            Login Page
+        </h2>
+        <!-- form method="post" action="j_security_check?/ED-Secure-war/faces/protected/mainmenu.xhtml" -->
+        <!--
+        <form method="post" action="j_security_check">
+            <p>
+                <h:outputLabel for="j_username" value="Username"/>
+                <h:inputText id="j_username" autocomplete="off" size="20"/>
+            </p>
+    
+            <p>
+                <h:outputLabel for="j_password" value="Password"/>
+                <h:inputSecret id="j_password" autocomplete="off" size="20"/>
+            </p>
+    
+            <p>
+                <h:form>
+                    <h:commandButton type="submit" value="Login"/>
+                    &nbsp;
+                    <h:commandButton type="reset" value="Reset"/>
+                </h:form>
+            </p>
+        </form>
+        -->
+        <h:form >
+            <p>
+                <h:outputText value="User ID"/>
 
-    <h2>
-        Login Page
-    </h2>
-    <!-- form method="post" action="j_security_check?/ED-Secure-war/faces/protected/mainmenu.xhtml" -->
-    <!--
-    <form method="post" action="j_security_check">
-        <p>
-            <h:outputLabel for="j_username" value="Username"/>
-            <h:inputText id="j_username" autocomplete="off" size="20"/>
-        </p>
+                <h:inputText class="w3-margin-left" value="#{loginManagedBean.userID}" size="5"/>
+            </p>
 
-        <p>
-            <h:outputLabel for="j_password" value="Password"/>
-            <h:inputSecret id="j_password" autocomplete="off" size="20"/>
-        </p>
-
-        <p>
-            <h:form>
-                <h:commandButton type="submit" value="Login"/>
+            <p>
+                <h:commandButton class="w3-btn w3-indigo w3-round-large" value="Login" action="#{loginManagedBean.checkUserID()}"/>
                 &nbsp;
-                <h:commandButton type="reset" value="Reset"/>
-            </h:form>
-        </p>
-    </form>
-     -->
-     <h:form >
-        <p>
-            <h:outputText value="User ID"/>
-            
-            <h:inputText value="#{loginManagedBean.userID}" size="5"/>
-        </p>
+                <h:commandButton class="w3-button w3-white w3-border w3-border-indigo w3-round-large" type="reset" value="Reset"/>
+            </p>
+        </h:form>
 
         <p>
-            <h:commandButton value="Login" action="#{loginManagedBean.checkUserID()}"/>
-            &nbsp;
-            <h:commandButton type="reset" value="Reset"/>
+            Click <h:outputLink value="signup/signUp.xhtml">here</h:outputLink>
+            to create a new account.
         </p>
-    </h:form>
+    </h:body>
 </html>
 
