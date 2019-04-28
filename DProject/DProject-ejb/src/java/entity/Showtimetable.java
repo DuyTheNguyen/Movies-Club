@@ -68,7 +68,16 @@ public class Showtimetable implements Serializable {
     public Showtimetable(String showtimeid) {
         this.showtimeid = showtimeid;
     }
-
+    
+    public Showtimetable(String showtimeid, String date, String time, String room, String movieName, String movieDes){
+        this.showtimeid = showtimeid;
+        this.date = date;
+        this.time = time;
+        this.room = room;
+        this.moviename = movieName;
+        this.moviedescription = movieDes;
+    }
+    
     public String getShowtimeid() {
         return showtimeid;
     }
