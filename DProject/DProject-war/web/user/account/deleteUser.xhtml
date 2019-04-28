@@ -5,21 +5,17 @@
     <h:head>
         <title>Delete Account</title>
     </h:head>
-    <h:body>
-
+    <h:body class="w3-container">
+        <h:outputStylesheet library="css" name="style.css"  />
         <h2>Are you sure to delete your account? We will be missing you !!!</h2>
 
         <p></p>
         <h:form>
             <h:commandButton id="submit" value="Confirm" 
+                             class="w3-btn w3-indigo w3-round-large"
                              action="#{userManagedBean.deleteUser()}"/>
         </h:form>
 
-        <p>
-            Click <h:outputLink value="yourAccount.xhtml">here</h:outputLink>
-            to return to the Your Account
-
-        </p>
         <p>
             Click <h:outputLink value="../index.xhtml">here</h:outputLink>
             to return to the Main Menu

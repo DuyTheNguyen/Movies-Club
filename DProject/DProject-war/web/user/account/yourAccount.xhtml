@@ -11,7 +11,8 @@
         <f:viewAction action="myEmpManagedBean.setDefaultUserID()" />
     </f:metadata>
     -->
-    <h:body>
+    <h:body class="w3-container">
+        <h:outputStylesheet library="css" name="style.css"  />
         <h1>
             <h:outputText value="Movie Club"/>
         </h1>
@@ -55,7 +56,7 @@
             </li>
         </ol>
          
-         Click <h:outputLink value="../index.xhtml">here</h:outputLink>
+         Click <h:outputLink value="./index.xhtml">here</h:outputLink>
             to return to the Main Menu
     </h:body>
 </html>
