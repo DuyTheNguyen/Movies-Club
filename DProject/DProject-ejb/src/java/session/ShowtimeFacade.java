@@ -61,10 +61,15 @@ public class ShowtimeFacade implements ShowtimeFacadeLocal {
      */
     @Override
     public ArrayList<Showtimetable> getShowtimes(){
-        TypedQuery<Showtimetable> tq = em.createNamedQuery("Showtimetable.findAll", Showtimetable.class);
-        ArrayList<Showtimetable> al = new ArrayList<>(tq.getResultList().size());
-        al.addAll(tq.getResultList());
-        return al;
+        try{
+            TypedQuery<Showtimetable> tq = em.createNamedQuery("Showtimetable.findAll", Showtimetable.class);
+        
+            ArrayList<Showtimetable> al = new ArrayList<>(tq.getResultList().size());
+            al.addAll(tq.getResultList());
+            return al;
+        }catch(NullPointerException e){
+            throw e;
+        }
     }
     
 }

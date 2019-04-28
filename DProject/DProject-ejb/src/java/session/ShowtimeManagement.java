@@ -19,7 +19,7 @@ import javax.ejb.Stateless;
 @Stateless
 public class ShowtimeManagement implements ShowtimeManagementRemote {
 
-      @EJB
+    @EJB
     private ShowtimeFacadeLocal showtimeFacade;
 
     private Showtimetable showtimeDTO2Entity(ShowtimeDTO showtimeDTO) {
@@ -66,7 +66,7 @@ public class ShowtimeManagement implements ShowtimeManagementRemote {
     @Override
     @PermitAll
     public ShowtimeDTO getShowtimeDetails(String showtimeid) {
-         // get the user
+        // get the user
         Showtimetable showtimetable = showtimeFacade.find(showtimeid);
 
         if (showtimetable == null) {
@@ -77,7 +77,7 @@ public class ShowtimeManagement implements ShowtimeManagementRemote {
             ShowtimeDTO showtimeDTO = new ShowtimeDTO(showtimetable.getShowtimeid(),
                     showtimetable.getDate(), showtimetable.getTime(), showtimetable.getRoom(),
                     showtimetable.getMoviename(), showtimetable.getMoviedescription());
-            
+
             return showtimeDTO;
         }
     }
@@ -85,21 +85,23 @@ public class ShowtimeManagement implements ShowtimeManagementRemote {
     @Override
     @PermitAll
     public ArrayList<ShowtimeDTO> getShowtimes() {
-        ArrayList<Showtimetable> alst = showtimeFacade.getShowtimes();
-        
-        if(alst.isEmpty()){
-            //not found
-            return null;
-        }else{
-            ArrayList<ShowtimeDTO> alsDTO = new ArrayList<>(alst.size());
-            for(Showtimetable stt: alst){
-                ShowtimeDTO stDTO = showtimeEntity2DTO(stt);
-                alsDTO.add(stDTO);
+        try {
+            ArrayList<Showtimetable> alst = showtimeFacade.getShowtimes();
+
+            if (alst.isEmpty()) {
+                //not found
+                return null;
+            } else {
+                ArrayList<ShowtimeDTO> alsDTO = new ArrayList<>(alst.size());
+                for (Showtimetable stt : alst) {
+                    ShowtimeDTO stDTO = showtimeEntity2DTO(stt);
+                    alsDTO.add(stDTO);
+                }
+                return alsDTO;
             }
-            return alsDTO;
+        } catch (NullPointerException e) {
+            throw e;
         }
     }
-
-   
 
 }
