@@ -32,7 +32,6 @@ public class ShowtimeManagedBean implements Serializable {
     
     public ShowtimeManagedBean() {
         userid = SessionUtils.getUserId();
-        
     }
     
     public String getUserid() {

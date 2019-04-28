@@ -13,19 +13,19 @@ import java.io.Serializable;
  */
 public class TicketDTO implements Serializable {
     private final String ticketId;
-    private final String userId;
-    private final String showtimeId;
+    private final UserDTO userId;
+    private final ShowtimeDTO showtimeId;
     private final String quantity;
 
     public String getTicketId() {
         return ticketId;
     }
 
-    public String getUserId() {
+    public UserDTO getUserId() {
         return userId;
     }
 
-    public String getShowtimeId() {
+    public ShowtimeDTO getShowtimeId() {
         return showtimeId;
     }
 
@@ -33,7 +33,7 @@ public class TicketDTO implements Serializable {
         return quantity;
     }
 
-    public TicketDTO(String ticketId, String userId, String showtimeId, String quantity) {
+    public TicketDTO(String ticketId, UserDTO userId, ShowtimeDTO showtimeId, String quantity) {
         this.ticketId = ticketId;
         this.userId = userId;
         this.showtimeId = showtimeId;
