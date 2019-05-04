@@ -20,7 +20,11 @@
         </h1>
         <h2>
             <h:outputText value="List of Tickets"/>
+
         </h2>
+        <h3> 
+            <h:outputLink value="./index.xhtml">Back to main menu</h:outputLink>
+        </h3>
 
         <c:choose>
             <c:when test="#{ticketManagedBean.isEmptyList()}">
@@ -40,26 +44,46 @@
                 <h:panelGroup layout="block" class="w3-card-4 " style="width:70%">
                     <header class="w3-container w3-light-grey">
                         <h3>
-                            <h:outputText value="#{ticket.ticketId}"/>
+                            <span>
+                                <strong>Ticket Number: </strong>
+                                <h:outputText value="#{ticket.ticketId}"/>
+                            </span>
+                            <span class="w3-margin-left">
+                                <strong>Quantity: </strong>
+                                <h:outputText value="#{ticket.quantity}"/>
+                            </span>
                         </h3>
                     </header>
                     <h:panelGroup layout="block" class="w3-container">
-
                         <p>
-                            <span><strong>Date: </strong></span><h:outputText value="#{ticket.userId.name}"/>
-                            <span class="w3-margin-left"><strong>Time: </strong></span><h:outputText value="#{ticket.quantity}"/>
-                            <span class="w3-margin-left"><strong>Room: </strong></span><h:outputText value="#{ticket.showtimeId.movieName}"/>
+                            <span>
+                                <strong>Movie: </strong> 
+                                <h:outputText value="#{ticket.showtimeId.movieName}"/>
+                            </span>
+                            <span class="w3-margin-left"><strong>Room: </strong><h:outputText value="#{ticket.showtimeId.room}"/></span>
+                        </p>
+                        <p>
+                            <h:form>
+                                <h:commandLink action="#{showtimeManagedBean.displayShowtime()}" value="Show showtime's deatails">
+                                    <f:setPropertyActionListener target="#{showtimeManagedBean.showtimeId}" value="#{ticket.showtimeId.showtimeId}" />
+                                </h:commandLink>
+                            </h:form>
                         </p>
                         <hr />
                         <p>
-                            <h:outputText value="#{ticket.showtimeId.movieDes}"/>
+                            <span><strong>Date: </strong><h:outputText value="#{ticket.showtimeId.date}"/></span>
+                            <span class="w3-margin-left"><strong>Time: </strong><h:outputText value="#{ticket.showtimeId.time}"/></span>
                         </p>
                         <br />
                     </h:panelGroup>
                     <h:form>
-                        <h:commandButton class="w3-button w3-block w3-dark-grey" value=" Buy Ticket " action="#{loginManagedBean.logout()}">
-                            <f:param name="showtimeid" value="#{ticket.ticketId}" />
-                        </h:commandButton>
+                        <h:commandLink onclick="return confirm('Are you sure to remove this ticket?')" 
+                                       class="w3-button w3-block w3-dark-grey"
+                                       value="Remove ticket" 
+                                       action="#{ticketManagedBean.removeTicket()}"
+                                       >
+                            <f:setPropertyActionListener target="#{ticketManagedBean.selectedTicketId}" value="#{ticket.ticketId}" />
+                        </h:commandLink>
                     </h:form>
                 </h:panelGroup>
                 <br />

@@ -6,12 +6,16 @@
 package web;
 
 import entity.TicketDTO;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
 import session.TicketManagementRemote;
 
 /**
@@ -23,6 +27,16 @@ import session.TicketManagementRemote;
 public class TicketManagedBean implements Serializable {
 
    private String userid;
+   
+   private String selectedTicketId;
+
+    public String getSelectedTicketId() {
+        return selectedTicketId;
+    }
+
+    public void setSelectedTicketId(String selectedTicketId) {
+        this.selectedTicketId = selectedTicketId;
+    }
    
    private ArrayList<TicketDTO> ticketList;
 
@@ -47,11 +61,33 @@ public class TicketManagedBean implements Serializable {
        
    }
    
+    private boolean isNull(String s) {
+        return (s == null);
+    }
+   
    public boolean isEmptyList(){
       return ticketList == null;
    }
    
    private ArrayList<TicketDTO> getTickets(String id){
         return ticketManagement.getTickets(id);
-    }
+   }
+   
+   //Remove ticket
+   public String removeTicket() throws IOException{
+       
+       // check ticket id is null
+        if (isNull(selectedTicketId)) {
+            return "debug";
+        }
+        boolean result = ticketManagement.removeTicket(selectedTicketId);
+        
+        if (result) {
+             ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+             ec.redirect(((HttpServletRequest) ec.getRequest()).getRequestURI());
+            return "success";
+        } else {
+            return "failure";
+        }
+   }
 }

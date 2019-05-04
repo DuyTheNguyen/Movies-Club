@@ -81,7 +81,7 @@ public class TicketManagement implements TicketManagementRemote {
 
     @Override
     public boolean removeTicket(String ticketid) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return ticketFacade.removeTicket(ticketid);
     }
 
     // Add business logic below. (Right-click in editor and choose

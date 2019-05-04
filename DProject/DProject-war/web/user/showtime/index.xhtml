@@ -28,11 +28,15 @@
                 <h:panelGroup layout="block" class="w3-card-4 " style="width:70%">
                     <header class="w3-container w3-light-grey">
                         <h3>
-                            <h:outputText value="#{showtime.movieName}"/>
+                            <h:form>
+                                <h:commandLink action="#{showtimeManagedBean.displayShowtime()}" value="#{showtime.movieName}">
+                                    <f:setPropertyActionListener target="#{showtimeManagedBean.showtimeId}" value="#{showtime.showtimeId}" />
+                                </h:commandLink>
+                            </h:form>
                         </h3>
                     </header>
                     <h:panelGroup layout="block" class="w3-container">
-                        
+
                         <p>
                             <span><strong>Date: </strong></span><h:outputText value="#{showtime.date}"/>
                             <span class="w3-margin-left"><strong>Time: </strong></span><h:outputText value="#{showtime.time}"/>
