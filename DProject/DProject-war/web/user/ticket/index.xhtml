@@ -62,13 +62,6 @@
                             </span>
                             <span class="w3-margin-left"><strong>Room: </strong><h:outputText value="#{ticket.showtimeId.room}"/></span>
                         </p>
-                        <p>
-                            <h:form>
-                                <h:commandLink action="#{showtimeManagedBean.displayShowtime()}" value="Show showtime's deatails">
-                                    <f:setPropertyActionListener target="#{showtimeManagedBean.showtimeId}" value="#{ticket.showtimeId.showtimeId}" />
-                                </h:commandLink>
-                            </h:form>
-                        </p>
                         
                         <hr />
                         <p>
@@ -86,7 +79,7 @@
                         </p>
                          <p>
                             <h:form>
-                                <h:commandLink action="#{ticketManagedBean.displayTicket()}" value="Show ticket's deatails">
+                                <h:commandLink action="#{ticketManagedBean.displayTicket()}" value="Show ticket's details">
                                     <f:setPropertyActionListener target="#{ticketManagedBean.ticketId}" value="#{ticket.ticketId}" />
                                 </h:commandLink>
                             </h:form>
@@ -99,7 +92,7 @@
                                        value="Remove ticket" 
                                        action="#{ticketManagedBean.removeTicket()}"
                                        >
-                            <f:setPropertyActionListener target="#{ticketManagedBean.selectedTicketId}" value="#{ticket.ticketId}" />
+                            <f:setPropertyActionListener target="#{ticketManagedBean.ticketId}" value="#{ticket.ticketId}" />
                         </h:commandLink>
                     </h:form>
                 </h:panelGroup>
