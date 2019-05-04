@@ -69,10 +69,27 @@
                                 </h:commandLink>
                             </h:form>
                         </p>
+                        
                         <hr />
                         <p>
                             <span><strong>Date: </strong><h:outputText value="#{ticket.showtimeId.date}"/></span>
                             <span class="w3-margin-left"><strong>Time: </strong><h:outputText value="#{ticket.showtimeId.time}"/></span>
+                        </p>
+                        
+                        <hr />
+                        <p>
+                            <h:form>
+                                <h:commandLink action="#{showtimeManagedBean.displayShowtime()}" value="Show showtime's deatails">
+                                    <f:setPropertyActionListener target="#{showtimeManagedBean.showtimeId}" value="#{ticket.showtimeId.showtimeId}" />
+                                </h:commandLink>
+                            </h:form>
+                        </p>
+                         <p>
+                            <h:form>
+                                <h:commandLink action="#{ticketManagedBean.displayTicket()}" value="Show ticket's deatails">
+                                    <f:setPropertyActionListener target="#{ticketManagedBean.ticketId}" value="#{ticket.ticketId}" />
+                                </h:commandLink>
+                            </h:form>
                         </p>
                         <br />
                     </h:panelGroup>
