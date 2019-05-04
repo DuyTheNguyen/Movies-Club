@@ -5,7 +5,9 @@
  */
 package web;
 
+import entity.ShowtimeDTO;
 import entity.TicketDTO;
+import entity.UserDTO;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -28,14 +30,44 @@ public class TicketManagedBean implements Serializable {
 
    private String userid;
    
-   private String selectedTicketId;
+   private String ticketId;
+   
+   private String quantity;
+  
+   private ShowtimeDTO showtimeDTO;
+   
+    private UserDTO userDTO;
 
-    public String getSelectedTicketId() {
-        return selectedTicketId;
+    public UserDTO getUserDTO() {
+        return userDTO;
     }
 
-    public void setSelectedTicketId(String selectedTicketId) {
-        this.selectedTicketId = selectedTicketId;
+    public void setUserDTO(UserDTO userDTO) {
+        this.userDTO = userDTO;
+    }
+
+    public String getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(String quantity) {
+        this.quantity = quantity;
+    }
+
+    public ShowtimeDTO getShowtimeDTO() {
+        return showtimeDTO;
+    }
+
+    public void setShowtimeDTO(ShowtimeDTO showtimeDTO) {
+        this.showtimeDTO = showtimeDTO;
+    }
+
+    public String getTicketId() {
+        return ticketId;
+    }
+
+    public void setTicketId(String ticketId) {
+        this.ticketId = ticketId;
     }
    
    private ArrayList<TicketDTO> ticketList;
@@ -77,10 +109,10 @@ public class TicketManagedBean implements Serializable {
    public String removeTicket() throws IOException{
        
        // check ticket id is null
-        if (isNull(selectedTicketId)) {
+        if (isNull(ticketId)) {
             return "debug";
         }
-        boolean result = ticketManagement.removeTicket(selectedTicketId);
+        boolean result = ticketManagement.removeTicket(ticketId);
         
         if (result) {
              ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
@@ -88,6 +120,26 @@ public class TicketManagedBean implements Serializable {
             return "success";
         } else {
             return "failure";
+        }
+   }
+   
+   public String displayTicket()
+   {
+        if (isNull(ticketId)) {
+            return "debug";
+        }
+        TicketDTO t = ticketManagement.getTicketDetails(ticketId);
+        
+        if (t == null) {
+            // no such showtime
+            return "failure";
+        } else {
+            // found - set details for display
+            this.ticketId = t.getTicketId();
+            this.quantity = t.getQuantity();
+            this.showtimeDTO = t.getShowtimeId();
+            this.userDTO = t.getUserId();
+            return "success";
         }
    }
 }
