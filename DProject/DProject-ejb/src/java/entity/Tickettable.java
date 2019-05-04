@@ -29,7 +29,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Tickettable.findAll", query = "SELECT t FROM Tickettable t")
     , @NamedQuery(name = "Tickettable.findByTicketid", query = "SELECT t FROM Tickettable t WHERE t.ticketid = :ticketid")
-    , @NamedQuery(name = "Tickettable.findByQuantity", query = "SELECT t FROM Tickettable t WHERE t.quantity = :quantity")})
+    , @NamedQuery(name = "Tickettable.findByQuantity", query = "SELECT t FROM Tickettable t WHERE t.quantity = :quantity")
+    , @NamedQuery(name = "Tickettable.findByUserid", query = "SELECT t FROM Tickettable t WHERE t.userid = :userid")})
 public class Tickettable implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -54,6 +55,13 @@ public class Tickettable implements Serializable {
 
     public Tickettable(String ticketid) {
         this.ticketid = ticketid;
+    }
+    
+     public Tickettable(String ticketid, Usertable userid, Showtimetable showtimeid, String quantity) {
+        this.userid = userid;
+        this.ticketid = ticketid;
+        this.showtimeid = showtimeid;
+        this.quantity = quantity;
     }
 
     public String getTicketid() {

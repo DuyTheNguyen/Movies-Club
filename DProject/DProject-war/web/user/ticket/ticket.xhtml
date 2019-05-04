@@ -1,0 +1,111 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Display a Showtime's Details</title>
+    </h:head>
+    <h:body class="w3-container">
+        <h:outputStylesheet library="css" name="style.css"  />
+        <h2>
+            Details of ticket number <h:outputText value="#{ticketManagedBean.ticketId}"/>
+        </h2>
+
+        <h:form>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                            <h:outputLabel value="Quantity: "/>
+                        </td>
+                        <td>
+                            <h:outputText value="#{ticketManagedBean.quantity}"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h:outputLabel value="--------------------"/>
+                        </td>
+                        <td>
+                            <h:outputText value="--------------------"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h:outputLabel value="Movie Name: "/>
+                        </td>
+                        <td>
+                            <h:outputText value="#{ticketManagedBean.showtimeDTO.movieName}"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h:outputLabel value="Date: "/>
+                        </td>
+                        <td>
+                            <h:outputText value="#{ticketManagedBean.showtimeDTO.date}"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h:outputLabel value="Time: "/>
+                        </td>
+                        <td>
+                            <h:outputText value="#{ticketManagedBean.showtimeDTO.time}"/>     
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h:outputLabel value="Room: "/>
+                        </td>
+                        <td>
+                            <h:outputText value="#{ticketManagedBean.showtimeDTO.room}"/>
+                        </td>
+                    </tr>
+                     <tr>
+                        <td>
+                            <h:outputLabel value="--------------------"/>
+                        </td>
+                        <td>
+                            <h:outputText value="--------------------"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h:outputLabel value="User Name: "/>
+                        </td>
+                        <td>
+                            <h:outputText value="#{ticketManagedBean.userDTO.name}"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h:outputLabel value="User Email: "/>
+                        </td>
+                        <td>
+                            <h:outputText value="#{ticketManagedBean.userDTO.email}"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h:outputLabel value="User's Phone Number: "/>
+                        </td>
+                        <td>
+                            <h:outputText value="#{ticketManagedBean.userDTO.phone}"/>
+                        </td>
+                    </tr>    
+                </tbody>
+            </table>
+
+            <p></p>
+
+            <p>
+                Click <h:outputLink value="../index.xhtml">here</h:outputLink>
+                to return to the Main Menu
+
+            </p>
+
+        </h:form>
+    </h:body>
+</html>
+

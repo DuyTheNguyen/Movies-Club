@@ -31,22 +31,22 @@
     <!-- ***************** End: LOGIN SECTION ************************* -->
     
     <!-- ***************** Begin: MAIN PAGE SECTION ************************* -->
-     <navigation-rule>
+    <navigation-rule>
         <description>Main Page</description>
         <from-view-id>/user/index.xhtml</from-view-id>
-         <!-- Your Account -->
+        <!-- Your Account -->
         <navigation-case>
             <from-action>#{navigationManagedBean.MainMenuNavigation('your_account')}</from-action> 
             <from-outcome>your_account</from-outcome>
             <to-view-id>/user/account/yourAccount.xhtml</to-view-id>
         </navigation-case>
-         <!-- Your Ticket -->
+        <!-- Your Ticket -->
         <navigation-case>
             <from-action>#{navigationManagedBean.MainMenuNavigation('your_ticket')}</from-action> 
             <from-outcome>your_ticket</from-outcome>
             <to-view-id>/user/ticket/index.xhtml</to-view-id>
         </navigation-case>
-         <!-- List of Showtime -->
+        <!-- List of Showtime -->
         <navigation-case>
             <from-action>#{navigationManagedBean.MainMenuNavigation('list_of_showtime')}</from-action> 
             <from-outcome>list_of_showtime</from-outcome>
@@ -115,7 +115,7 @@
         </navigation-case>
     </navigation-rule>
     
-     <!-- Change password -->
+    <!-- Change password -->
     <navigation-rule>
         <description>Change User Password</description>
         <from-view-id>/user/account/changeUserPassword.xhtml</from-view-id>
@@ -133,7 +133,7 @@
         </navigation-case>
     </navigation-rule>
     
-     <!-- Delete User -->
+    <!-- Delete User -->
     <navigation-rule>
         <description>Delete User</description>
         <from-view-id>/user/account/deleteUser.xhtml</from-view-id>
@@ -168,4 +168,54 @@
         </navigation-case>
     </navigation-rule>
     <!-- ***************** End: SIGN UP SECTION ************************* -->
+    
+    <!-- ***************** Begin: LIST OF SHOW TIME SECTION ************************* -->
+    <navigation-rule>
+        <description>List of Showtime</description>
+        <from-view-id>/user/showtime/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{showtimeManagedBean.displayShowtime()}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/user/showtime/showtime.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-action>#{showtimeManagedBean.displayShowtime()}</from-action>
+            <from-outcome>failure</from-outcome>
+            <to-view-id>/authFailure.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <!-- ***************** End: LIST OF SHOWTIME SECTION ************************* -->
+    
+    
+    
+    
+    <!-- ***************** Begin: YOUR TICKETS ************************* -->
+    <navigation-rule>
+        <description>Your Ticket</description>
+        <from-view-id>/user/ticket/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{showtimeManagedBean.displayShowtime()}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/user/showtime/showtime.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-action>#{showtimeManagedBean.displayShowtime()}</from-action>
+            <from-outcome>failure</from-outcome>
+            <to-view-id>/authFailure.xhtml</to-view-id>
+        </navigation-case>
+        
+        <navigation-case>
+            <from-action>#{ticketManagedBean.displayTicket()}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/user/ticket/ticket.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-action>#{ticketManagedBean.displayTicket()}</from-action>
+            <from-outcome>failure</from-outcome>
+            <to-view-id>/authFailure.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <!-- ***************** End: YOUR TICKETS ************************* -->
+    
+    
 </faces-config>

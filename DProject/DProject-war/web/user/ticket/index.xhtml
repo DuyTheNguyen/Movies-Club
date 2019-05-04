@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Movie Club - User Main Menu</title>
+    </h:head>
+    <!--
+    <f:metadata>
+        <f:viewAction action="myEmpManagedBean.setDefaultUserID()" />
+    </f:metadata>
+    -->
+    <h:body class="w3-container">
+        <h:outputStylesheet library="css" name="style.css"  />
+        <h1>
+            <h:outputText value="Movie Club"/>
+        </h1>
+        <h2>
+            <h:outputText value="List of Tickets"/>
+
+        </h2>
+        <h3> 
+            <h:outputLink value="./index.xhtml">Back to main menu</h:outputLink>
+        </h3>
+
+        <c:choose>
+            <c:when test="#{ticketManagedBean.isEmptyList()}">
+                <h3>
+                    <h:outputText value="Your list is empty!"/>
+                </h3>
+            </c:when>
+            <c:otherwise>
+                <h3>
+                    <h:outputText value="You have #{ticketManagedBean.ticketList.size()} ticket(s)."/>
+                </h3>
+            </c:otherwise>
+        </c:choose>
+
+        <h:panelGroup layout="block">
+            <ui:repeat value="#{ticketManagedBean.ticketList}" var="ticket">
+                <h:panelGroup layout="block" class="w3-card-4 " style="width:70%">
+                    <header class="w3-container w3-light-grey">
+                        <h3>
+                            <span>
+                                <strong>Ticket Number: </strong>
+                                <h:outputText value="#{ticket.ticketId}"/>
+                            </span>
+                            <span class="w3-margin-left">
+                                <strong>Quantity: </strong>
+                                <h:outputText value="#{ticket.quantity}"/>
+                            </span>
+                        </h3>
+                    </header>
+                    <h:panelGroup layout="block" class="w3-container">
+                        <p>
+                            <span>
+                                <strong>Movie: </strong> 
+                                <h:outputText value="#{ticket.showtimeId.movieName}"/>
+                            </span>
+                            <span class="w3-margin-left"><strong>Room: </strong><h:outputText value="#{ticket.showtimeId.room}"/></span>
+                        </p>
+                        
+                        <hr />
+                        <p>
+                            <span><strong>Date: </strong><h:outputText value="#{ticket.showtimeId.date}"/></span>
+                            <span class="w3-margin-left"><strong>Time: </strong><h:outputText value="#{ticket.showtimeId.time}"/></span>
+                        </p>
+                        
+                        <hr />
+                        <p>
+                            <h:form>
+                                <h:commandLink action="#{showtimeManagedBean.displayShowtime()}" value="Show showtime's deatails">
+                                    <f:setPropertyActionListener target="#{showtimeManagedBean.showtimeId}" value="#{ticket.showtimeId.showtimeId}" />
+                                </h:commandLink>
+                            </h:form>
+                        </p>
+                         <p>
+                            <h:form>
+                                <h:commandLink action="#{ticketManagedBean.displayTicket()}" value="Show ticket's details">
+                                    <f:setPropertyActionListener target="#{ticketManagedBean.ticketId}" value="#{ticket.ticketId}" />
+                                </h:commandLink>
+                            </h:form>
+                        </p>
+                        <br />
+                    </h:panelGroup>
+                    <h:form>
+                        <h:commandLink onclick="return confirm('Are you sure to remove this ticket?')" 
+                                       class="w3-button w3-block w3-dark-grey"
+                                       value="Remove ticket" 
+                                       action="#{ticketManagedBean.removeTicket()}"
+                                       >
+                            <f:setPropertyActionListener target="#{ticketManagedBean.ticketId}" value="#{ticket.ticketId}" />
+                        </h:commandLink>
+                    </h:form>
+                </h:panelGroup>
+                <br />
+                <br />
+            </ui:repeat>
+        </h:panelGroup>
+    </h:body>
+</html>
+

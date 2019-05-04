@@ -34,10 +34,12 @@
                 </h:form>
             </li>
 
-            <li>
-                <h:outputLink value="showtime/index.xhtml">
-                    List of Showtime
-                </h:outputLink>
+           <li>
+                <h:form>
+                    <h:commandLink value="Your Ticket" action="#{navigationManagedBean.MainMenuNavigation('your_ticket')}">
+                        <f:param  name="passedID" value="#{myEmpManagedBean.empId}"/>
+                    </h:commandLink>
+                </h:form>
             </li>
             <li>
                 <h:form>

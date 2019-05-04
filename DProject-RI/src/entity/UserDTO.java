@@ -6,6 +6,7 @@
 package entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  *
@@ -18,7 +19,7 @@ public class UserDTO implements Serializable {
     private final String password;
     private final String appGroup;
     private final String phone;
-
+   
     public String getUserid() {
         return userid;
     }

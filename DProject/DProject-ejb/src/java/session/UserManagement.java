@@ -5,8 +5,11 @@
  */
 package session;
 
+import entity.TicketDTO;
+import entity.Tickettable;
 import entity.UserDTO;
 import entity.Usertable;
+import java.util.ArrayList;
 import javax.annotation.security.PermitAll;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -21,42 +24,7 @@ public class UserManagement implements UserManagementRemote {
     @EJB
     private UserFacadeLocal userFacade;
 
-    private Usertable userDTO2Entity(UserDTO userDTO) {
-        if (userDTO == null) {
-            // just in case
-            return null;
-        }
-
-        String userid = userDTO.getUserid();
-        String name = userDTO.getName();
-        String phone = userDTO.getPhone();
-        String email = userDTO.getEmail();
-        String password = userDTO.getPassword();
-        String appGroup = userDTO.getAppGroup();
-
-        Usertable usertable = new Usertable(userid, name, phone, email, password, appGroup);
-
-        return usertable;
-    }
-
-    private UserDTO userEntity2DTO(Usertable user) {
-        if (user == null) {
-            // just in case
-            return null;
-        }
-
-        UserDTO userDTO = new UserDTO(
-                user.getUserid(),
-                user.getName(),
-                user.getPhone(),
-                user.getEmail(),
-                user.getPassword(),
-                user.getAppgroup()
-        );
-
-        return userDTO;
-    }
-
+    
     @Override
     @PermitAll
     public boolean hasUser(String userid) {
@@ -79,7 +47,7 @@ public class UserManagement implements UserManagementRemote {
 
         // user not exist
         // convert to entity
-        Usertable user = this.userDTO2Entity(userDTO);
+        Usertable user = Utility.userDTO2Entity(userDTO);
         // add one
         return userFacade.addUser(user);
     }
@@ -94,7 +62,7 @@ public class UserManagement implements UserManagementRemote {
 
         // user exist, update details
         // convert to entity class
-        Usertable user = this.userDTO2Entity(userDTO);
+        Usertable user = Utility.userDTO2Entity(userDTO);
         // update details
         return userFacade.updatUserDetails(user);
     }
@@ -118,8 +86,9 @@ public class UserManagement implements UserManagementRemote {
             // found - prepare details
             UserDTO userDTO = new UserDTO(user.getUserid(),
                     user.getName(), user.getPhone(),
-                    user.getEmail(), user.getPassword(), user.getAppgroup());
-            
+                    user.getEmail(), user.getPassword(), user.getAppgroup()
+                   );
+                    
             return userDTO;
         }
     }
