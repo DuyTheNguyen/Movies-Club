@@ -25,7 +25,7 @@ public class TicketManagement implements TicketManagementRemote {
     @Override
     @PermitAll
     public boolean hasShowtime(String ticketid) {
-        return ticketFacade.hasShowtime(ticketid);
+        return ticketFacade.hasTicket(ticketid);
     }
 
     @Override
