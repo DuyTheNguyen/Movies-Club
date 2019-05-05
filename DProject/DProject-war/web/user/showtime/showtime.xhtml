@@ -8,7 +8,7 @@
     <h:body class="w3-container">
         <h:outputStylesheet library="css" name="style.css"  />
         <h2>
-            Details of <h:outputText value="#{showtimeManagedBean.movieName}"/>
+            Details of <h:outputText value="#{showtimeManagedBean.showtimeDTO.movieName}"/>
         </h2>
 
         <h:form>
@@ -19,7 +19,7 @@
                             <h:outputLabel value="ID: "/>
                         </td>
                         <td>
-                            <h:outputText value="#{showtimeManagedBean.showtimeId}"/>
+                            <h:outputText value="#{showtimeManagedBean.showtimeDTO.showtimeId}"/>
                         </td>
                     </tr>
                     <tr>
@@ -27,7 +27,7 @@
                             <h:outputLabel value="Room: "/>
                         </td>
                         <td>
-                            <h:outputText value="#{showtimeManagedBean.room}"/>
+                            <h:outputText value="#{showtimeManagedBean.showtimeDTO.room}"/>
                         </td>
                     </tr>
                     <tr>
@@ -35,7 +35,7 @@
                             <h:outputLabel value="Date: "/>
                         </td>
                         <td>
-                            <h:outputText value="#{showtimeManagedBean.date}"/>     
+                            <h:outputText value="#{showtimeManagedBean.showtimeDTO.date}"/>     
                         </td>
                     </tr>
                     <tr>
@@ -43,7 +43,7 @@
                             <h:outputLabel value="Time: "/>
                         </td>
                         <td>
-                            <h:outputText value="#{showtimeManagedBean.time}"/>
+                            <h:outputText value="#{showtimeManagedBean.showtimeDTO.time}"/>
                         </td>
                     </tr>
                     <tr>
@@ -51,7 +51,7 @@
                             <h:outputLabel value="Movie Description: "/>
                         </td>
                         <td>
-                            <h:outputText value="#{showtimeManagedBean.movieDes}"/>
+                            <h:outputText value="#{showtimeManagedBean.showtimeDTO.movieDes}"/>
                         </td>
                     </tr>    
                 </tbody>

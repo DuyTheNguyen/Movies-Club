@@ -1,12 +1,45 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Purchase</title>
     </h:head>
-    <h:body>
-        Hello from Facelets
+    <h:body class="w3-container">
+        <h:outputStylesheet library="css" name="style.css"  />
+        <h2>Are you sure to delete your account? We will be missing you !!!</h2>
+
+        <p></p>
+        <h:form>
+            <h:commandButton id="submit" value="Add 1 more" 
+                             class="w3-btn w3-indigo w3-round-large"
+                             action="#{shoppingCartManagedBean.addTicket()}">
+                <f:setPropertyActionListener target="#{shoppingCartManagedBean.showtimeId}" value="#{shoppingCartManagedBean.showtimeId}" />
+                <f:setPropertyActionListener target="#{shoppingCartManagedBean.userId}" value="#{shoppingCartManagedBean.userId}" />
+            </h:commandButton>
+        </h:form>
+        <h:form>
+            <h:commandButton id="submit" value="Checkout" 
+                             class="w3-btn w3-indigo w3-round-large"
+                             action="#{shoppingCartManagedBean.checkout()}"/>
+        </h:form>
+
+        <p><h:outputText value="ShowtimeID: #{shoppingCartManagedBean.showtimeId}"/></p>
+        <p><h:outputText value="UserID:#{shoppingCartManagedBean.userId}"/></p>
+        <p><h:outputText value="Quantity:#{shoppingCartManagedBean.quantity}"/></p>
+        <p>
+            Click <h:outputLink value="../index.xhtml">here</h:outputLink>
+            to return to the Main Menu
+
+        </p>
+
+        <ui:repeat value="#{shoppingCartManagedBean.carts}" var="ticket">
+            <p><h:outputText value="ShowtimeID: #{ticket.quantity}"/></p>
+            <p><h:outputText value="UserID:#{ticket.userId.name}"/></p>
+            <p><h:outputText value="Quantity:#{ticket.showtimeId.movieName}"/></p>
+        </ui:repeat>
     </h:body>
 </html>
 
