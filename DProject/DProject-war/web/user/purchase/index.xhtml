@@ -9,8 +9,10 @@
     </h:head>
     <h:body class="w3-container">
         <h:outputStylesheet library="css" name="style.css"  />
-        <h2>Are you sure to delete your account? We will be missing you !!!</h2>
-
+        <h2>Shopping Cart</h2>
+        <h3><span><strong>Showtime ID: </strong></span><h:outputText value="#{shoppingCartManagedBean.showtimeId}"/></h3>
+        <h3><span><strong>User ID: </strong></span><h:outputText value="#{shoppingCartManagedBean.userId}"/></h3>
+        <h3><span><strong>Quantity: </strong></span><h:outputText value="#{shoppingCartManagedBean.quantity}"/></h3>
         <p></p>
         <h:form>
             <h:commandButton id="submit" value="Add a ticket" 
@@ -21,7 +23,7 @@
             </h:commandButton>
         </h:form>
         <br/>
-         <h:form>
+        <h:form>
             <h:commandButton id="submit" value="Remove a ticket" 
                              class="w3-btn w3-red w3-round-large"
                              action="#{shoppingCartManagedBean.removeTicket()}">
@@ -29,12 +31,10 @@
                 <f:setPropertyActionListener target="#{shoppingCartManagedBean.userId}" value="#{shoppingCartManagedBean.userId}" />
             </h:commandButton>
         </h:form>
-       
 
-        <p><h:outputText value="ShowtimeID: #{shoppingCartManagedBean.showtimeId}"/></p>
-        <p><h:outputText value="UserID:#{shoppingCartManagedBean.userId}"/></p>
-        <p><h:outputText value="Quantity:#{shoppingCartManagedBean.quantity}"/></p>
-         <h:form>
+        <br/>
+
+        <h:form>
             <h:commandButton id="submit" value="Checkout" 
                              class="w3-btn w3-indigo w3-round-large"
                              action="#{shoppingCartManagedBean.checkout()}"/>
