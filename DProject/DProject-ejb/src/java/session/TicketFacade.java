@@ -108,7 +108,7 @@ public class TicketFacade implements TicketFacadeLocal, ShoppingCartFacadeLocal 
     @Override
     public String checkOut(ArrayList<Tickettable> tickettableList) {
         if (tickettableList.isEmpty()) {
-            return "failure";
+            return "emptylist";
         }
         //return tickettableList.get(0).getTicketid();
         try {
