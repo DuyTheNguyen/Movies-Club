@@ -16,9 +16,9 @@ import javax.ejb.Local;
 @Local
 public interface ShoppingCartFacadeLocal {
 
-    public boolean add(Tickettable tickettable);
+    //public boolean add(Tickettable tickettable);
 
-    ArrayList<Tickettable> getCart();
+    //ArrayList<Tickettable> getCart();
 
     //public boolean addCartItem(Tickettable tickettable);
 
@@ -26,5 +26,5 @@ public interface ShoppingCartFacadeLocal {
 
     //public boolean updateCartItem(Tickettable tickettable);
     
-    public String checkOut();
+    public String checkOut(ArrayList<Tickettable> tickettableList);
 }

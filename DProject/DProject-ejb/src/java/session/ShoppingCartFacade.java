@@ -23,7 +23,7 @@ import javax.persistence.PersistenceContextType;
  * @author 101036886
  */
 @Stateful
-public class ShoppingCartFacade implements ShoppingCartFacadeLocal {
+public class ShoppingCartFacade{
 
     @PersistenceContext(unitName = "DProject-ejbPU", type = PersistenceContextType.EXTENDED)
     private EntityManager em;
@@ -39,7 +39,6 @@ public class ShoppingCartFacade implements ShoppingCartFacadeLocal {
         ticketCart = new ArrayList<>();
     }
 
-    @Override
     public boolean add(Tickettable tickettable) {
         boolean result = false;
 
@@ -65,13 +64,10 @@ public class ShoppingCartFacade implements ShoppingCartFacadeLocal {
         return result;
     }
     
-    @Override
     public ArrayList<Tickettable> getCart() {
         return ticketCart;
     }
 
-    @Override
-    @TransactionAttribute(TransactionAttributeType.REQUIRED)
     public String checkOut() {
         try {
             if(ticketCart.isEmpty()) return "empty list";
@@ -85,18 +81,12 @@ public class ShoppingCartFacade implements ShoppingCartFacadeLocal {
         return "failure";
     }
 
-    private Usertable getUsertableFrom(String userId) {
-       /* TypedQuery<Usertable> tq = em.createQuery("SELECT u FROM Usertable u WHERE u.userid = :userid_id", Usertable.class);
-        tq.setParameter("userid_id", userId);
-        Usertable u = tq.getSingleResult();*/
+    private Usertable getUsertableFrom(String userId) {  
         Usertable u = em.getReference(Usertable.class, userId);
         return u;
     }
 
     private Showtimetable getShowtimetableFrom(String showtimeId) {
-       /* TypedQuery<Showtimetable> tq = em.createQuery("SELECT s FROM Showtimetable s WHERE s.showtimeid = :showtimeid_id", Showtimetable.class);
-        tq.setParameter("showtimeid_id", showtimeId);
-        Showtimetable s = tq.getSingleResult*/
         Showtimetable s = em.getReference(Showtimetable.class, showtimeId);
         return s;
     }

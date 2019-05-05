@@ -86,7 +86,8 @@ public class ShoppingCartManagement implements ShoppingCartManagementRemote {
     @PermitAll
     public String checkOut() {
         // return shoppingCartFacade.checkOut();
-      return ticketCart.get(0).getQuantity() + "-" + ticketCart.get(0).getTicketid();
+      //return ticketCart.get(0).getQuantity() + "-" + ticketCart.get(0).getTicketid();
+      return shoppingCartFacade.checkOut(ticketCart);
     }
     
     @Remove

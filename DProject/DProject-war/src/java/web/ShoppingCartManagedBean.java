@@ -116,7 +116,7 @@ public class ShoppingCartManagedBean implements Serializable{
         UserDTO u = new UserDTO(userId,"empty","empty","empty","empty","empty");
         ShowtimeDTO s = new ShowtimeDTO(showtimeId,"empty","empty","empty","empty","empty");
         
-        TicketDTO t = new TicketDTO("111111",u,s,Integer.toString(this.quantity));
+        TicketDTO t = new TicketDTO("00009",u,s,Integer.toString(this.quantity));
         //carts = shoppingCartManagement.getCart();
         return shoppingCartManagement.remove(t);
         /*
