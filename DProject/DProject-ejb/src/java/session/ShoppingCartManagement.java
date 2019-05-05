@@ -23,7 +23,7 @@ public class ShoppingCartManagement implements ShoppingCartManagementRemote {
     @EJB
     private ShoppingCartFacadeLocal shoppingCartFacade;
     
-    private ArrayList<TicketDTO> ticketCart; 
+    private ArrayList<Tickettable> ticketCart; 
     
     @PostConstruct
     private void initializeBean(){
@@ -36,10 +36,11 @@ public class ShoppingCartManagement implements ShoppingCartManagementRemote {
     @PermitAll
     public String add(TicketDTO ticketDTO) {
         boolean result = false;
+        Tickettable tickettable = Utility.ticketDTO2Entity(ticketDTO);
         try {
             //Already have ticket for this showtime
-            for (TicketDTO ticket : ticketCart) {
-                if ((ticket.getShowtimeId().getShowtimeId()).equals(ticketDTO.getShowtimeId().getShowtimeId())) {
+            for (Tickettable ticket : ticketCart) {
+                if ((ticket.getShowtimeid().getShowtimeid()).equals(tickettable.getShowtimeid().getShowtimeid())) {
                     Integer newV =  Integer.parseInt(ticketDTO.getQuantity());
                     ticket.setQuantity(Integer.toString(newV));
                     result = true;
@@ -47,24 +48,25 @@ public class ShoppingCartManagement implements ShoppingCartManagementRemote {
             }
             //New ticket
             if (!result) {
-                ticketCart.add(ticketDTO);
+                ticketCart.add(tickettable);
                 
                 result = true;
-               return ticketCart.get(0).getQuantity() + "-" + ticketCart.get(0).getTicketId();
+               return ticketCart.get(0).getQuantity() + "-" + ticketCart.get(0).getTicketid();
             }
         } catch (Exception ex) {
         }
-        return ticketDTO.getTicketId();
+        return tickettable.getTicketid();
     }
     
     @Override
     @PermitAll
     public String remove(TicketDTO ticketDTO) {
         boolean result = false;
+        Tickettable tickettable = Utility.ticketDTO2Entity(ticketDTO);
         try {
             //Already have ticket for this showtime
-            for (TicketDTO ticket : ticketCart) {
-                if ((ticket.getShowtimeId().getShowtimeId()).equals(ticketDTO.getShowtimeId().getShowtimeId())) {
+            for (Tickettable ticket : ticketCart) {
+                if ((ticket.getShowtimeid().getShowtimeid()).equals(tickettable.getShowtimeid().getShowtimeid())) {
                     Integer newV =  Integer.parseInt(ticketDTO.getQuantity());
                     ticket.setQuantity(Integer.toString(newV));
                     result = true;
@@ -72,13 +74,13 @@ public class ShoppingCartManagement implements ShoppingCartManagementRemote {
             }
             //New ticket
             if (!result) {
-                ticketCart.add(ticketDTO);
+                ticketCart.add(tickettable);
                 result = true;
-               return ticketCart.get(0).getQuantity() + "-" + ticketCart.get(0).getTicketId();
+               return ticketCart.get(0).getQuantity() + "-" + ticketCart.get(0).getTicketid();
             }
         } catch (Exception ex) {
         }
-        return ticketDTO.getTicketId();
+        return tickettable.getTicketid();
     }
     
 
@@ -86,7 +88,7 @@ public class ShoppingCartManagement implements ShoppingCartManagementRemote {
     @PermitAll
     public String checkOut() {
         // return shoppingCartFacade.checkOut();
-      return ticketCart.get(0).getQuantity() + "-" + ticketCart.get(0).getTicketId();
+      return ticketCart.get(0).getQuantity() + "-" + ticketCart.get(0).getTicketid();
     }
     
     @Remove
