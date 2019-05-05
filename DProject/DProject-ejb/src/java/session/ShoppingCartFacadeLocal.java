@@ -14,16 +14,17 @@ import javax.ejb.Local;
  * @author 101036886
  */
 @Local
-public interface TicketFacadeLocal {
-    boolean hasTicket(String ticketid);
+public interface ShoppingCartFacadeLocal {
 
-    Tickettable find(String ticketid);
-    
-    ArrayList<Tickettable> getTickets(String userid);
-    
-    boolean addTicket(Tickettable ticket);
+    public boolean add(Tickettable tickettable);
 
-    boolean updatTicketQuantity(String ticketid, String quantity);
+    //ArrayList<Tickettable> getCart();
+
+    //public boolean addCartItem(Tickettable tickettable);
+
+   // public boolean deleteCartItem(String ticketId);
+
+    //public boolean updateCartItem(Tickettable tickettable);
     
-    boolean removeTicket(String ticketid);
+    public boolean checkOut();
 }

@@ -45,7 +45,7 @@ public class TicketFacade implements TicketFacadeLocal {
     
     
     @Override
-    public boolean hasShowtime(String ticketid) {
+    public boolean hasTicket(String ticketid) {
         return (find(ticketid) != null);
     }
 
