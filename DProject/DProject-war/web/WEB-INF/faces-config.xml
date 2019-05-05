@@ -163,10 +163,12 @@
         <description>Sign Up</description>
         <from-view-id>/signup/signUp.xhtml</from-view-id>
         <navigation-case>
+            <from-action>#{userManagedBean.createUser()}</from-action>
             <from-outcome>success</from-outcome>
             <to-view-id>/signup/signUpSuccessful.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>
+            <from-action>#{userManagedBean.createUser()}</from-action>
             <from-outcome>failure</from-outcome>
             <to-view-id>/signup/signUpFailure.xhtml</to-view-id>
         </navigation-case>
