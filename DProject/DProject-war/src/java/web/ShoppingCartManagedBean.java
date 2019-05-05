@@ -87,7 +87,7 @@ public class ShoppingCartManagedBean implements Serializable{
     @EJB
     private ShoppingCartManagementRemote shoppingCartManagement;
     
-    public String addTicket(){
+    public void addTicket(){
         
         this.quantity += 1;
         
@@ -95,18 +95,10 @@ public class ShoppingCartManagedBean implements Serializable{
         ShowtimeDTO s = new ShowtimeDTO(showtimeId,"empty","empty","empty","empty","empty");
         
         TicketDTO t = new TicketDTO("111111",u,s,Integer.toString(this.quantity));
-        //carts = shoppingCartManagement.getCart();
-        return shoppingCartManagement.add(t);
-        /*
-        boolean result =  shoppingCartManagement.add(t);
-        if(result){
-            return "success";
-        }
-        return "failure";
-        */
+        shoppingCartManagement.add(t);
     }
     
-    public String removeTicket(){
+    public void removeTicket(){
         
         this.quantity -= 1;
         
@@ -117,15 +109,8 @@ public class ShoppingCartManagedBean implements Serializable{
         ShowtimeDTO s = new ShowtimeDTO(showtimeId,"empty","empty","empty","empty","empty");
         
         TicketDTO t = new TicketDTO("00009",u,s,Integer.toString(this.quantity));
-        //carts = shoppingCartManagement.getCart();
-        return shoppingCartManagement.remove(t);
-        /*
-        boolean result =  shoppingCartManagement.add(t);
-        if(result){
-            return "success";
-        }
-        return "failure";
-        */
+        shoppingCartManagement.remove(t);
+       
     }
     
     public String checkout(){

@@ -35,7 +35,8 @@
         <br/>
 
         <h:form>
-            <h:commandButton id="submit" value="Checkout" 
+            <h:commandButton onclick="return confirm('Are you sure to checkout?')" 
+                             id="submit" value="Checkout" 
                              class="w3-btn w3-indigo w3-round-large"
                              action="#{shoppingCartManagedBean.checkout()}"/>
         </h:form>

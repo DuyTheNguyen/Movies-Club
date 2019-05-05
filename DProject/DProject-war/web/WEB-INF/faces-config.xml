@@ -225,4 +225,17 @@
     <!-- ***************** End: YOUR TICKETS ************************* -->
     
     
+    
+     <!-- ***************** Begin: PURCHASE  ************************* -->
+    <navigation-rule>
+        <description>Purchase</description>
+        <from-view-id>/user/purchase/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{shoppingCartManagedBean.checkout()}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/user/purchase/purchaseSuccessful.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+      <!-- ***************** End: PURCHASE  ************************* -->
+    
 </faces-config>
