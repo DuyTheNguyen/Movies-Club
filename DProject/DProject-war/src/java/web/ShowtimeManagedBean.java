@@ -12,6 +12,7 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.view.ViewScoped;
 import javax.servlet.http.HttpSession;
 import session.ShowtimeManagementRemote;
 
@@ -20,7 +21,7 @@ import session.ShowtimeManagementRemote;
  * @author 101036886
  */
 @Named(value = "showtimeManagedBean")
-@RequestScoped
+@ViewScoped
 public class ShowtimeManagedBean implements Serializable {
 
     private String userid;

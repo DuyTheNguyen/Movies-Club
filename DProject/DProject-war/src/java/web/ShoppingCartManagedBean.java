@@ -22,7 +22,7 @@ import session.ShoppingCartManagementRemote;
  * @author 101036886
  */
 @Named(value = "shoppingCartManagedBean")
-@RequestScoped
+@ViewScoped
 public class ShoppingCartManagedBean implements Serializable{
 
     /**
@@ -91,16 +91,41 @@ public class ShoppingCartManagedBean implements Serializable{
         
         this.quantity += 1;
         
-        UserDTO u = new UserDTO(userId,"","","","","");
-        ShowtimeDTO s = new ShowtimeDTO(showtimeId,"","","","","");
+        UserDTO u = new UserDTO(userId,"empty","empty","empty","empty","empty");
+        ShowtimeDTO s = new ShowtimeDTO(showtimeId,"empty","empty","empty","empty","empty");
         
         TicketDTO t = new TicketDTO("111111",u,s,Integer.toString(this.quantity));
         //carts = shoppingCartManagement.getCart();
+        return shoppingCartManagement.add(t);
+        /*
         boolean result =  shoppingCartManagement.add(t);
         if(result){
             return "success";
         }
         return "failure";
+        */
+    }
+    
+    public String removeTicket(){
+        
+        this.quantity -= 1;
+        
+        //Cannot lower than 1
+        if(this.quantity == 0) this.quantity = 1;
+        
+        UserDTO u = new UserDTO(userId,"empty","empty","empty","empty","empty");
+        ShowtimeDTO s = new ShowtimeDTO(showtimeId,"empty","empty","empty","empty","empty");
+        
+        TicketDTO t = new TicketDTO("111111",u,s,Integer.toString(this.quantity));
+        //carts = shoppingCartManagement.getCart();
+        return shoppingCartManagement.remove(t);
+        /*
+        boolean result =  shoppingCartManagement.add(t);
+        if(result){
+            return "success";
+        }
+        return "failure";
+        */
     }
     
     public String checkout(){

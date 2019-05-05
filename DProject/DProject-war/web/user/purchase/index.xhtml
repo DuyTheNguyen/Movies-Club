@@ -13,22 +13,32 @@
 
         <p></p>
         <h:form>
-            <h:commandButton id="submit" value="Add 1 more" 
-                             class="w3-btn w3-indigo w3-round-large"
+            <h:commandButton id="submit" value="Add a ticket" 
+                             class="w3-btn w3-green w3-round-large"
                              action="#{shoppingCartManagedBean.addTicket()}">
                 <f:setPropertyActionListener target="#{shoppingCartManagedBean.showtimeId}" value="#{shoppingCartManagedBean.showtimeId}" />
                 <f:setPropertyActionListener target="#{shoppingCartManagedBean.userId}" value="#{shoppingCartManagedBean.userId}" />
             </h:commandButton>
         </h:form>
-        <h:form>
-            <h:commandButton id="submit" value="Checkout" 
-                             class="w3-btn w3-indigo w3-round-large"
-                             action="#{shoppingCartManagedBean.checkout()}"/>
+        <br/>
+         <h:form>
+            <h:commandButton id="submit" value="Remove a ticket" 
+                             class="w3-btn w3-red w3-round-large"
+                             action="#{shoppingCartManagedBean.removeTicket()}">
+                <f:setPropertyActionListener target="#{shoppingCartManagedBean.showtimeId}" value="#{shoppingCartManagedBean.showtimeId}" />
+                <f:setPropertyActionListener target="#{shoppingCartManagedBean.userId}" value="#{shoppingCartManagedBean.userId}" />
+            </h:commandButton>
         </h:form>
+       
 
         <p><h:outputText value="ShowtimeID: #{shoppingCartManagedBean.showtimeId}"/></p>
         <p><h:outputText value="UserID:#{shoppingCartManagedBean.userId}"/></p>
         <p><h:outputText value="Quantity:#{shoppingCartManagedBean.quantity}"/></p>
+         <h:form>
+            <h:commandButton id="submit" value="Checkout" 
+                             class="w3-btn w3-indigo w3-round-large"
+                             action="#{shoppingCartManagedBean.checkout()}"/>
+        </h:form>
         <p>
             Click <h:outputLink value="../index.xhtml">here</h:outputLink>
             to return to the Main Menu

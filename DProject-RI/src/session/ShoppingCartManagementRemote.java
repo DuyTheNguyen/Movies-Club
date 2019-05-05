@@ -15,9 +15,11 @@ import javax.ejb.Remote;
  */
 @Remote
 public interface ShoppingCartManagementRemote {
-    public boolean add(TicketDTO ticketDTO);
+    public String add(TicketDTO ticketDTO);
+    
+    public String remove(TicketDTO ticketDTO);
 
-    //ArrayList<TicketDTO> getCart();
+   // ArrayList<TicketDTO> getCart();
 
     //public boolean addCartItem(TicketDTO ticketDTO);
 
@@ -25,5 +27,5 @@ public interface ShoppingCartManagementRemote {
 
     //public boolean updateCartItem(TicketDTO ticketDTO);
     
-    public boolean checkOut();
+    public String checkOut();
 }
