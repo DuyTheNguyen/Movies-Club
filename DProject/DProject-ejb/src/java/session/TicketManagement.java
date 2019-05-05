@@ -21,7 +21,7 @@ public class TicketManagement implements TicketManagementRemote {
 
     @EJB
     private TicketFacadeLocal ticketFacade;
-    
+
     @Override
     @PermitAll
     public boolean hasShowtime(String ticketid) {
@@ -31,7 +31,7 @@ public class TicketManagement implements TicketManagementRemote {
     @Override
     @PermitAll
     public TicketDTO getTicketDetails(String ticketid) {
-         // get the user
+        // get the user
         Tickettable tickettable = ticketFacade.find(ticketid);
 
         if (tickettable == null) {
@@ -40,8 +40,8 @@ public class TicketManagement implements TicketManagementRemote {
         } else {
             // found - prepare details
             TicketDTO ticketDTO = new TicketDTO(tickettable.getTicketid(),
-                    Utility.userEntity2DTO(tickettable.getUserid()),  Utility.showtimeEntity2DTO(tickettable.getShowtimeid()), tickettable.getQuantity()
-                   );
+                    Utility.userEntity2DTO(tickettable.getUserid()), Utility.showtimeEntity2DTO(tickettable.getShowtimeid()), tickettable.getQuantity()
+            );
 
             return ticketDTO;
         }
@@ -50,7 +50,7 @@ public class TicketManagement implements TicketManagementRemote {
     @Override
     @PermitAll
     public ArrayList<TicketDTO> getTickets(String userid) {
-         try {
+        try {
             ArrayList<Tickettable> alst = ticketFacade.getTickets(userid);
 
             if (alst.isEmpty()) {

@@ -37,4 +37,12 @@ public class SessionUtils {
 		else
 			return null;
 	}
+        
+        public static String getShowtimeId() {
+		HttpSession session = getSession();
+		if (session != null)
+			return (String) session.getAttribute("showtimeid");
+		else
+			return null;
+	}
 }

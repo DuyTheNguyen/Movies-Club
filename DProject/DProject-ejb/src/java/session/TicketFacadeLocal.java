@@ -15,7 +15,7 @@ import javax.ejb.Local;
  */
 @Local
 public interface TicketFacadeLocal {
-    boolean hasShowtime(String ticketid);
+    boolean hasTicket(String ticketid);
 
     Tickettable find(String ticketid);
     

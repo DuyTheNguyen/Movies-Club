@@ -169,7 +169,7 @@
     </navigation-rule>
     <!-- ***************** End: SIGN UP SECTION ************************* -->
     
-    <!-- ***************** Begin: LIST OF SHOW TIME SECTION ************************* -->
+    <!-- ***************** Begin: LIST OF SHOWTIME SECTION ************************* -->
     <navigation-rule>
         <description>List of Showtime</description>
         <from-view-id>/user/showtime/index.xhtml</from-view-id>
@@ -182,6 +182,13 @@
             <from-action>#{showtimeManagedBean.displayShowtime()}</from-action>
             <from-outcome>failure</from-outcome>
             <to-view-id>/authFailure.xhtml</to-view-id>
+        </navigation-case>
+        
+         <navigation-case>
+            <from-action>#{showtimeManagedBean.purchaseShowtimeTicket()}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/user/purchase/index.xhtml</to-view-id>
+            <redirect/>
         </navigation-case>
     </navigation-rule>
     <!-- ***************** End: LIST OF SHOWTIME SECTION ************************* -->
@@ -217,5 +224,18 @@
     </navigation-rule>
     <!-- ***************** End: YOUR TICKETS ************************* -->
     
+    
+    
+     <!-- ***************** Begin: PURCHASE  ************************* -->
+    <navigation-rule>
+        <description>Purchase</description>
+        <from-view-id>/user/purchase/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{shoppingCartManagedBean.checkout()}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/user/purchase/purchaseSuccessful.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+      <!-- ***************** End: PURCHASE  ************************* -->
     
 </faces-config>

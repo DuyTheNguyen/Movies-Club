@@ -15,7 +15,11 @@ public class TicketDTO implements Serializable {
     private final String ticketId;
     private final UserDTO userId;
     private final ShowtimeDTO showtimeId;
-    private final String quantity;
+    private String quantity;
+
+    public String getQuantity() {
+        return quantity;
+    }
 
     public String getTicketId() {
         return ticketId;
@@ -29,8 +33,8 @@ public class TicketDTO implements Serializable {
         return showtimeId;
     }
 
-    public String getQuantity() {
-        return quantity;
+    public void setQuantity(String quantity){
+        this.quantity = quantity;
     }
 
     public TicketDTO(String ticketId, UserDTO userId, ShowtimeDTO showtimeId, String quantity) {

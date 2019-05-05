@@ -2,29 +2,29 @@
 <Scene Scope="Project" version="2">
     <Scope Scope="Faces Configuration Only"/>
     <Scope Scope="Project">
-        <Node id="faces/index.xhtml" x="552" y="22" zoom="true"/>
         <Node id="user/showtime/showtime.xhtml" x="1650" y="150" zoom="true"/>
         <Node id="user/account/changeUserDetails.xhtml" x="150" y="900" zoom="true"/>
+        <Node id="faces/index.xhtml" x="552" y="22" zoom="true"/>
         <Node id="index.xhtml" x="900" y="450" zoom="true"/>
         <Node id="user/debugUserId.xhtml" x="1142" y="554" zoom="true"/>
         <Node id="user/account/changeUserPassword.xhtml" x="1173" y="137" zoom="true"/>
         <Node id="user/account/yourAccount.xhtml" x="69" y="270" zoom="true"/>
-        <Node id="user/account/deleteUserSuccessful.xhtml" x="400" y="600" zoom="true"/>
         <Node id="user/account/changePasswordFailure.xhtml" x="150" y="750" zoom="true"/>
         <Node id="user/account/changeUserSuccessful.xhtml" x="900" y="300" zoom="true"/>
+        <Node id="user/account/deleteUserSuccessful.xhtml" x="400" y="600" zoom="true"/>
         <Node id="authFailure.xhtml" x="81" y="160" zoom="true"/>
-        <Node id="signup/signUpFailure.xhtml" x="1192" y="38" zoom="true"/>
         <Node id="user/account/deleteUser.xhtml" x="400" y="750" zoom="true"/>
         <Node id="login.xhtml" x="249" y="8" zoom="true"/>
-        <Node id="signup/signUpSuccessful.xhtml" x="854" y="35" zoom="true"/>
+        <Node id="signup/signUpFailure.xhtml" x="1192" y="38" zoom="true"/>
         <Node id="user/account/changePasswordSuccessful.xhtml" x="650" y="300" zoom="true"/>
-        <Node id="user/showtime/index.xhtml" x="406" y="265" zoom="true"/>
+        <Node id="signup/signUpSuccessful.xhtml" x="854" y="35" zoom="true"/>
         <Node id="user/account/changeUserFailure.xhtml" x="717" y="384" zoom="true"/>
-        <Node id="user/account/deleteUserFailure.xhtml" x="425" y="378" zoom="true"/>
+        <Node id="user/showtime/index.xhtml" x="406" y="265" zoom="true"/>
         <Node id="user/index.xhtml" x="414" y="157" zoom="true"/>
+        <Node id="user/account/deleteUserFailure.xhtml" x="425" y="378" zoom="true"/>
         <Node id="user/account/displayUser.xhtml" x="240" y="495" zoom="true"/>
-        <Node id="user/ticket/index.xhtml" x="1400" y="300" zoom="true"/>
         <Node id="signup/signUp.xhtml" x="938" y="121" zoom="true"/>
+        <Node id="user/ticket/index.xhtml" x="1400" y="300" zoom="true"/>
     </Scope>
     <Scope Scope="All Faces Configurations"/>
 </Scene>
