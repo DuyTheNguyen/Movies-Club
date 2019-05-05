@@ -49,19 +49,18 @@ public class ShoppingCartManagement implements ShoppingCartManagementRemote {
             //New ticket
             if (!result) {
                 ticketCart.add(tickettable);
-                
-                result = true;
-               return ticketCart.get(0).getQuantity() + "-" + ticketCart.get(0).getTicketid();
             }
         } catch (Exception ex) {
+            return "failure";
         }
-        return tickettable.getTicketid();
+        return "success";
     }
     
     @Override
     @PermitAll
     public String remove(TicketDTO ticketDTO) {
         boolean result = false;
+        
         Tickettable tickettable = Utility.ticketDTO2Entity(ticketDTO);
         try {
             //Already have ticket for this showtime
@@ -75,12 +74,11 @@ public class ShoppingCartManagement implements ShoppingCartManagementRemote {
             //New ticket
             if (!result) {
                 ticketCart.add(tickettable);
-                result = true;
-               return ticketCart.get(0).getQuantity() + "-" + ticketCart.get(0).getTicketid();
             }
         } catch (Exception ex) {
+            return "failure";
         }
-        return tickettable.getTicketid();
+        return "success";
     }
     
 
