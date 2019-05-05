@@ -49,8 +49,8 @@
                         <br />
                     </h:panelGroup>
                     <h:form>
-                        <h:commandButton class="w3-button w3-block w3-dark-grey" value=" Buy Ticket " action="#{loginManagedBean.logout()}">
-                            <f:param name="showtimeid" value="#{showtime.showtimeId}" />
+                        <h:commandButton class="w3-button w3-block w3-dark-grey" value=" Buy Ticket " action="#{navigationManagedBean.ShowtimeNavigation('purchase')}">
+                            <f:setPropertyActionListener target="#{shoppingCartManagedBean.showtimeId}" value="#{showtime.showtimeId}" />
                         </h:commandButton>
                     </h:form>
                 </h:panelGroup>

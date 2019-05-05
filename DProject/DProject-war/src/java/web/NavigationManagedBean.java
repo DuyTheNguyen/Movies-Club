@@ -43,6 +43,25 @@ public class NavigationManagedBean implements Serializable {
         return result;
     }
     
+    public String ShowtimeNavigation(String destination)
+    {
+        String result = "error";
+        switch(destination){
+            case "purchase":
+                result = goToPurchase();
+                break;
+            default:
+                result = goToErrorPage();
+                break;
+        }
+        
+        return result;
+    }
+    
+    private String goToPurchase(){
+        return "purchase";
+    }
+    
     private String goToYourAccount(){
         return "your_account";
     }
