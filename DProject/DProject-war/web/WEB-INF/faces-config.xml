@@ -12,6 +12,7 @@
             <from-action>#{loginManagedBean.checkUserID()}</from-action>
             <from-outcome>success</from-outcome>
             <to-view-id>/user/index.xhtml</to-view-id>
+            <redirect/>
         </navigation-case>
         <navigation-case>
             <from-action>#{loginManagedBean.checkUserID()}</from-action>
