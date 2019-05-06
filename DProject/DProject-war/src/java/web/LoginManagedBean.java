@@ -5,6 +5,7 @@
  */
 package web;
 
+import entity.UserDTO;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
@@ -24,6 +25,17 @@ public class LoginManagedBean implements Serializable {
     private UserManagementRemote userManagement;
 
     private String userID;
+    
+    private String password;
+    
+    public String getPassword(){
+        return password;
+    }
+    
+    public void setPassword(String password)
+    {
+        this.password  = password;
+    }
 
     public String getUserID() {
         return userID;
@@ -41,9 +53,18 @@ public class LoginManagedBean implements Serializable {
     }
 
     public String checkUserID() {
+        //Check whether user id exists
         if (userManagement.hasUser(userID)) {
+            //Get user
+            UserDTO u = userManagement.getUserDetails(userID);
+            
+            //Check password
+            if(!password.equals(u.getPassword())) return "failure";
+            
+            //Set userid to session scope attribute
             HttpSession session = SessionUtils.getSession();
             session.setAttribute("userid", userID);
+            
             return "success";
         }
         return "failure";
@@ -53,7 +74,6 @@ public class LoginManagedBean implements Serializable {
         HttpSession session = SessionUtils.getSession();
         session.invalidate();
         return "/login.xhtml?faces-redirect=true";
-        //return "logout";
     }
 
 }
