@@ -42,9 +42,15 @@
         -->
         <h:form >
             <p>
-                <h:outputText value="User ID"/>
+                <h:outputText value="User ID:  "/>
 
                 <h:inputText class="w3-margin-left" value="#{loginManagedBean.userID}" size="5"/>
+            </p>
+            
+            <p>
+                <h:outputText value="Password:  "/>
+
+                <h:inputSecret class="w3-margin-left" value="#{loginManagedBean.password}" size="8"/>
             </p>
 
             <p>

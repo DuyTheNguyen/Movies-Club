@@ -24,9 +24,7 @@ import session.ShoppingCartManagementRemote;
 @ViewScoped
 public class ShoppingCartManagedBean implements Serializable {
 
-    /**
-     * Creates a new instance of ShoppingCartManagedBean
-     */
+    
     private String showtimeId;
     private String userId;
     private Integer quantity;
