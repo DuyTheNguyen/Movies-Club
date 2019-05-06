@@ -5,11 +5,8 @@
  */
 package session;
 
-import entity.TicketDTO;
-import entity.Tickettable;
 import entity.UserDTO;
 import entity.Usertable;
-import java.util.ArrayList;
 import javax.annotation.security.PermitAll;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;

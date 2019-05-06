@@ -84,6 +84,5 @@ public class TicketManagement implements TicketManagementRemote {
         return ticketFacade.removeTicket(ticketid);
     }
 
-    // Add business logic below. (Right-click in editor and choose
-    // "Insert Code > Add Business Method")
+    
 }

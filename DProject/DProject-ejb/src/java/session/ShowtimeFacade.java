@@ -19,8 +19,6 @@ import javax.persistence.TypedQuery;
 @Stateless
 public class ShowtimeFacade implements ShowtimeFacadeLocal {
 
-    // Add business logic below. (Right-click in editor and choose
-    // "Insert Code > Add Business Method")
     @PersistenceContext(unitName = "DProject-ejbPU")
     private EntityManager em;
 

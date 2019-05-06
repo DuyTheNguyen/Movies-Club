@@ -9,7 +9,6 @@ import entity.Showtimetable;
 import entity.Tickettable;
 import entity.Usertable;
 import java.util.ArrayList;
-import java.util.Random;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -60,7 +59,7 @@ public class TicketFacade implements TicketFacadeLocal, ShoppingCartFacadeLocal 
     @Override
     public ArrayList<Tickettable> getTickets(String userid) {
         try {
-            //TypedQuery<Tickettable> tq = em.createNamedQuery("Tickettable.findByUserid", Tickettable.class);
+            //User typed querys to get list of ticket from an userid
             TypedQuery<Tickettable> tq = em.createQuery("SELECT t FROM Tickettable t WHERE t.userid.userid = :userid_id", Tickettable.class);
             tq.setParameter("userid_id", userid);
             ArrayList<Tickettable> al = new ArrayList<>(tq.getResultList().size());
@@ -105,6 +104,11 @@ public class TicketFacade implements TicketFacadeLocal, ShoppingCartFacadeLocal 
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    /*
+    * Add every ticket to the database
+    *
+    *
+    */
     @Override
     public String checkOut(ArrayList<Tickettable> tickettableList) {
         if (tickettableList.isEmpty()) {
@@ -118,7 +122,7 @@ public class TicketFacade implements TicketFacadeLocal, ShoppingCartFacadeLocal 
                 Showtimetable showtime = this.getShowtimetableFrom(t.getShowtimeid().getShowtimeid());
 
                 Tickettable n = new Tickettable();
-                n.setTicketid(String.valueOf(gen()));
+                n.setTicketid(String.valueOf(Utility.get5DigitsNumber()));
                 n.setQuantity(t.getQuantity());
                 n.setUserid(user);
                 n.setShowtimeid(showtime);
@@ -136,10 +140,7 @@ public class TicketFacade implements TicketFacadeLocal, ShoppingCartFacadeLocal 
         }
     }
 
-    private int gen() {
-        Random r = new Random(System.currentTimeMillis());
-        return ((1 + r.nextInt(2)) * 10000 + r.nextInt(10000));
-    }
+   
 
     private Usertable getUsertableFrom(String userId) {
         Usertable u = em.getReference(Usertable.class, userId);
