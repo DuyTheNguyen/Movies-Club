@@ -40,18 +40,21 @@
             <from-action>#{navigationManagedBean.MainMenuNavigation('your_account')}</from-action> 
             <from-outcome>your_account</from-outcome>
             <to-view-id>/user/account/yourAccount.xhtml</to-view-id>
+            <redirect/>
         </navigation-case>
         <!-- Your Ticket -->
         <navigation-case>
             <from-action>#{navigationManagedBean.MainMenuNavigation('your_ticket')}</from-action> 
             <from-outcome>your_ticket</from-outcome>
             <to-view-id>/user/ticket/index.xhtml</to-view-id>
+               <redirect/>
         </navigation-case>
         <!-- List of Showtime -->
         <navigation-case>
             <from-action>#{navigationManagedBean.MainMenuNavigation('list_of_showtime')}</from-action> 
             <from-outcome>list_of_showtime</from-outcome>
             <to-view-id>/user/showtime/index.xhtml</to-view-id>
+               <redirect/>
         </navigation-case>
         <!-- Log out -->
         <navigation-case>
@@ -160,10 +163,12 @@
         <description>Sign Up</description>
         <from-view-id>/signup/signUp.xhtml</from-view-id>
         <navigation-case>
+            <from-action>#{userManagedBean.createUser()}</from-action>
             <from-outcome>success</from-outcome>
             <to-view-id>/signup/signUpSuccessful.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>
+            <from-action>#{userManagedBean.createUser()}</from-action>
             <from-outcome>failure</from-outcome>
             <to-view-id>/signup/signUpFailure.xhtml</to-view-id>
         </navigation-case>

@@ -12,6 +12,7 @@ import entity.Tickettable;
 import entity.UserDTO;
 import entity.Usertable;
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  *
@@ -153,5 +154,14 @@ public class Utility {
         );
 
         return showtimeDTO;
+    }
+    
+    /*
+    * Generate a random 5 digits number
+    *
+    */
+     public static int get5DigitsNumber() {
+        Random r = new Random(System.currentTimeMillis());
+        return ((1 + r.nextInt(2)) * 10000 + r.nextInt(10000));
     }
 }
